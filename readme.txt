@@ -1,14 +1,14 @@
 ------------------------Setup --------------------------------------------------
 
-1. Open terminal and run the following command to pull down a copy of the 'cucumber' repo :
+1. Open terminal and run the following command to pull down a copy of the 'selenium-accelerator' repo :
 
-	git clone https://{username}@bitbucket.org/mindstixlabs/automation_framework.git
+	git clone https://github.com/mindstix-labs/selenium-accelerator.git
 
-2. Navigate to 'cucumber_baseline' directory and run following command to generate project structure based on your IDE:
+2. Navigate to 'selenium-accelerator' directory and run following command to generate project structure based on your IDE:
 
 	./gradlew eclipse OR ./gradlew idea
 
-3. Open 'cucumber_baseline' in Eclipse by doing : File > Import > Existing Projects into Workspace and browse to the ‘cucumber_baseline’ folder and open it.
+3. Open 'selenium-accelerator' in Eclipse by doing : File > Import > Existing Projects into Workspace and browse to the ‘selenium-accelerator’ folder and open it.
 
 4. To download gradle on system and to build project execute the following command : 
  
