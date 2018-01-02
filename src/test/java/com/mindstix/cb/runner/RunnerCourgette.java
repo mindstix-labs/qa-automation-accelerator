@@ -14,7 +14,7 @@ import cucumber.api.CucumberOptions;
 @CourgetteOptions(
 	    runLevel = CourgetteRunLevel.FEATURE,
 	    showTestOutput = true,
-	    rerunFailedScenarios = false,
+	    rerunFailedScenarios = true,
 	    cucumberOptions = @CucumberOptions(
 	    		  features = {"src/test/resources/feature/ecom","src/test/resources/feature/setup"},
 	    		  tags = "@cbt",
