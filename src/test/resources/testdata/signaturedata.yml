@@ -1,0 +1,8 @@
+signatures:
+- signatureID: signOne
+  coordinates:
+  - [10,50]
+  - [20,30]
+  - [11,55]  
+  - [12,57] 
+  - [11,52]
