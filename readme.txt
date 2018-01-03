@@ -18,21 +18,21 @@
 
 1. To execute all test scenarios execute the following command :
 
-	./gradlew clean test -Denv.browser=chrome -Denv.driverPath=drivers/mac/chromedriver_x64_2_33
+	./gradlew clean test -Denv.browser=chrome
 
 	---Note--- 
    -Here we are selecting chrome browser for our test execution.
-   -Here we are giving chrome driver path according to Mac OS (If new drivers are needed then add them to the drivers directory)
+   -The required web drivers will be automatically downloaded and cached on first run.
 
 2. To execute only one scenario using tag, add "-Dcucumber.options=<value>" to gradle command.
    For e.g. Following command will execute all the scenarios with '@tag1' tag :
 	
-	./gradlew clean test -Denv.browser=chrome -Denv.driverPath=drivers/mac/chromedriver_x64_2_33 -Dcucumber.options=" --tags @tag1"
+	./gradlew clean test -Denv.browser=chrome -Dcucumber.options=" --tags @tag1"
 
 3. To change chrome execution mode, add "-Denv.mode=<value>" to gradle command.
    For e.g. Following command will execute tests in grid mode on chrome :
 	
-	./gradlew clean test -Denv.browser=chrome -Denv.driverPath=drivers/mac/chromedriver_x64_2_33 -Denv.mode=grid
+	./gradlew clean test -Denv.browser=chrome -Denv.mode=grid
 
 	---Note---
    -Chrome has following modes:-
@@ -44,7 +44,7 @@
 4. To select environment to run test cases, add "-Denv.urlPrefix=<value>" in gradle command.
    For e.g. Following command will execute tests on 'www.automationpractice.com' environment :
 
-	./gradlew clean test -Denv.browser=chrome -Denv.driverPath=drivers/mac/chromedriver_x64_2_33 -Denv.urlPrefix=www -Denv.domain=.automationpractice.com
+	./gradlew clean test -Denv.browser=chrome -Denv.urlPrefix=www -Denv.domain=.automationpractice.com
 
 	---Note---
    -By default urlPrefix is "www"
@@ -58,5 +58,3 @@
     Jenkinsfile (not used anymore) : Uses gradle based trigger which also takes care of grid setup/teardown.
     Jenkinsfile-maven (not used anymore) : Uses maven based trigger which also takes care of grid setup/teardown.
     Jenkinsfile-nogrid (used actively) : Uses gradle based trigger. Does not teardown grid. But starts it if down.
-
------------------------END OF README--------------------------------------------------

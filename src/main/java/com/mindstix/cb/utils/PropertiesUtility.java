@@ -3,7 +3,6 @@
  */
 package com.mindstix.cb.utils;
 
-import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -130,15 +129,9 @@ public final class PropertiesUtility {
 			allSignatureCoordinates = signature.getSignatures();
 			LOGGER.info("Loaded Signature Coordinates Data");
 		} catch (IOException ex) {
-			LOGGER.error("File not found!");
+			LOGGER.error("File not found!", ex);
 		} finally {
-			if (dataInput != null) {
-				try {
-					dataInput.close();
-				} catch (IOException ex) {
-					LOGGER.error("An Exception occurred!");
-				}
-			}
+			IOUtils.closeQuietly(dataInput);
 		}
 
 	}
