@@ -1,0 +1,20 @@
+hub:
+  image: selenium/hub
+  ports:
+    - "4444:4444"
+  extra_hosts:
+    staging.mydomain.com: 127.0.0.1
+    
+firefox:
+  image: selenium/node-firefox
+  links:
+    - hub
+  extra_hosts:
+    staging.mydomain.com: 127.0.0.1
+
+chrome:
+  image: selenium/node-chrome
+  links:
+    - hub
+  extra_hosts:
+    staging.mydomain.com: 127.0.0.1

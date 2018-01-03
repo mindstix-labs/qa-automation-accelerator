@@ -1,0 +1,89 @@
+/*
+ * Copyright (c) 2017 Mindstix Inc.
+ */
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'findbugs'
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:'+junitVersion
+    compile 'com.fasterxml.jackson.core:jackson-databind:'+jacksonDatabindVersion
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:'+courgettVersion
+    compile 'io.github.prashant-ramcharan:courgette-jvm:'+courgettVersion
+	compile 'org.seleniumhq.selenium:selenium-firefox-driver:'+seleniumVersion
+    compile 'org.seleniumhq.selenium:selenium-chrome-driver:'+seleniumVersion
+	compile 'org.seleniumhq.selenium:selenium-api:'+seleniumVersion
+	compile 'org.seleniumhq.selenium:selenium-java:'+seleniumVersion
+	compile 'info.cukes:cucumber-java:'+cucumberVersion
+	compile 'info.cukes:cucumber-junit:'+cucumberVersion
+	compile 'org.slf4j:slf4j-api:'+slf4jVersion
+	compile 'org.slf4j:slf4j-log4j12:'+slf4jVersion
+	testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: cucumberPicoVersion
+	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonDataformatVersion
+	compile group: 'org.yaml', name: 'snakeyaml', version: snakeYamlVersion
+	compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: webDriverManagerVersion
+}
+
+test {
+	def urlPrefixDefault = 'www'
+	def urlPrefixCustom = System.getProperty('env.urlPrefix');
+	if (urlPrefixCustom == null || urlPrefixCustom == '') {
+		urlPrefixCustom = urlPrefixDefault;
+	}
+	def defaultDomain = '.automationpractice.com'
+	def customDomain = System.getProperty('env.domain');
+	if (customDomain == null || customDomain == '') {
+		customDomain = defaultDomain;
+	}
+	def browser = System.getProperty("env.browser");
+	if (browser == null || browser == '') {
+		browser = 'chrome'
+	}
+	def driverPath = System.getProperty("env.driverPath");
+	if (driverPath == null || driverPath == '') {
+		driverPath = 'drivers/linux/chromedriver_2_33'
+	}
+	def mode = System.getProperty("env.mode");
+	if (mode == null || mode == '') {
+		mode = 'normal'
+	}
+	def hubIpAddress = System.getProperty("env.hubIP");
+	if (hubIpAddress == null || hubIpAddress == '') {
+		hubIpAddress = '172.17.0.2:4444'
+	}
+	def cucumberOptions = System.getProperty("cucumber.options");
+	if (cucumberOptions == null || cucumberOptions == '') {
+		cucumberOptions = '--tags @cbt'
+	}
+	systemProperties 'env.browser': browser
+	systemProperties 'env.driverPath': driverPath
+	systemProperties 'env.mode': mode
+	systemProperties 'env.hubIP': hubIpAddress
+	systemProperties 'env.urlPrefix': urlPrefixCustom
+	systemProperties 'env.domain': customDomain
+	//systemProperties 'env.browser': System.getProperty('env.browser')
+	//systemProperties 'env.driverPath': System.getProperty("env.driverPath")
+	systemProperties 'env.baseURL': 'http://'+ urlPrefixCustom + customDomain
+	systemProperties 'cucumber.options': cucumberOptions
+	systemProperties 'file.encoding': 'utf-8'
+
+	include '**/*Courgette.class'
+
+    outputs.upToDateWhen { false }
+}
+
+findbugsMain {
+  reports {
+    xml.enabled = false
+    html.enabled = true
+  }
+}
