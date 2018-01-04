@@ -3,6 +3,7 @@
  */
 package com.mindstix.cb.utils;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
