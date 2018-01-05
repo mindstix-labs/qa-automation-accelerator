@@ -10,4 +10,5 @@ Scenario Outline:
 	Examples:
 		| email 		| password 		|
 		| test1@mx.com 	| mypassword 	|
-		| test2@mx.com 	| mypassword 	|
+		# This is intended to fail as there is no such user
+		| test2@mx.com 	| invalidpassword 	|
