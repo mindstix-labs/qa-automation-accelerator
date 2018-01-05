@@ -1,3 +1,10 @@
+------------------------------Pre-Requisites---------------------------------------------
+- Java 8 (lower version will not work since Selenium 3.5.3 needs Java 8)
+- docker, docker-compose - If utilizing the selenium-grid features, then need latest version of docker, docker-compose
+    Instructions to setup docker, docker-compose are -
+        https://docs.docker.com/engine/installation/#server
+        https://docs.docker.com/compose/install/
+
 ------------------------Project Setup --------------------------------------------------
 
 1. Open terminal and run the following command to pull down a copy of the 'selenium-accelerator' repo :
