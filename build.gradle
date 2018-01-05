@@ -27,6 +27,7 @@ dependencies {
 	compile 'info.cukes:cucumber-junit:'+cucumberVersion
 	compile 'org.slf4j:slf4j-api:'+slf4jVersion
 	compile 'org.slf4j:slf4j-log4j12:'+slf4jVersion
+	testCompile 'io.rest-assured:rest-assured:'+restAssuredVersion
 	testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: cucumberPicoVersion
 	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonDataformatVersion
 	compile group: 'org.yaml', name: 'snakeyaml', version: snakeYamlVersion
