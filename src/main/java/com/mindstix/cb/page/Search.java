@@ -25,13 +25,13 @@ public class Search extends BasePage {
 	}
 
 	public boolean verifyProduct(String expectedProduct) {
-		boolean isExpectedProduct = true;
+		boolean isExpectedProduct = false;
 		List<WebElement> productList = getArrayOfElementByCSS("searchResultListCSS");
 		LOGGER.info("Expecetd product is {}", expectedProduct);
 		for (WebElement product : productList) {
 			LOGGER.info("Product title is {}", product.getText());
-			if (!product.getText().contains(expectedProduct)) {
-				isExpectedProduct = false;
+			if (product.getText().contains(expectedProduct)) {
+				isExpectedProduct = true;
 			}
 		}
 		return isExpectedProduct;

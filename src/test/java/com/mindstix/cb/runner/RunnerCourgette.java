@@ -14,14 +14,18 @@ import cucumber.api.CucumberOptions;
 @CourgetteOptions(
 	    runLevel = CourgetteRunLevel.FEATURE,
 	    showTestOutput = true,
-	    rerunFailedScenarios = true,
+	    rerunFailedScenarios = false,
+	    threads = 2,
 	    cucumberOptions = @CucumberOptions(
-	    		  features = {"src/test/resources/feature/ecom","src/test/resources/feature/setup"},
+	    		  features = {"src/test/resources/feature/ecom",
+											      "src/test/resources/feature/setup",
+			                      "src/test/resources/feature/api"},
 	    		  tags = "@cbt",
 	    		  dryRun = false,
 	    		  strict = true,
 	    		  monochrome=true,
-	    		  glue = {"com.mindstix.cb.stepdefinition.ecom"},
+	    		  glue = {"com.mindstix.cb.stepdefinition.ecom",
+			              "com.mindstix.cb.stepdefinition.api"},
 	    		  plugin = {"pretty", "html:build/reports/cucumberreport/index", 
 	    		                  "json:build/reports/cucumberreport/cucumber.json" }
 	    		))
