@@ -27,6 +27,8 @@ Opinionated baseline to bootstrap selenium and cucumber based web application te
 
 12. Fully functional Jenkinsfile that can be used to setup a Jenkins pipeline
 
+13. Sample API tests using RestAssured
+
 For detailed instructions refer readme.txt
 
 # Licensed under MIT license
