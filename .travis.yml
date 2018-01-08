@@ -2,3 +2,19 @@ language: java
 jdk:
   - oraclejdk8
 script: ./gradlew clean build -x test
+# blocklist
+branches:
+  except:
+  - legacy
+  - experimental
+# safelist
+branches:
+  only:
+  - master
+  - stable
+notifications:
+  email:
+    recipients:
+      - amit.mujawar@mindstix.com
+    on_success: always # default: change
+    on_failure: always # default: always
