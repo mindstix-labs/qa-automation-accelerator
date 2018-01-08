@@ -208,7 +208,7 @@ public abstract class BasePage {
 		} catch (NoSuchElementException exception) {
 			LOGGER.error("No Such Element Present on Web Page");
 		} catch (Exception exception) {
-			LOGGER.error("No Such Element Present on Web Page");
+			LOGGER.error("Unknown exception", exception);
 		}
 		return dropDownList;
 	}
@@ -241,7 +241,7 @@ public abstract class BasePage {
 		} catch (NoSuchElementException exception) {
 			LOGGER.error("No Such Element Present on Web Page");
 		} catch (Exception exception) {
-			LOGGER.error("No Such Element Present on Web Page");
+			LOGGER.error("Unknown exception", exception);
 		}
 		return dropDownList;
 	}
