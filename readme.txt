@@ -32,7 +32,7 @@
 	./gradlew clean test -Denv.browser=chrome
 
 	---Note--- 
-   -Here we are selecting chrome browser for our test execution.
+   -Here we are selecting chrome browser for our test execution. Other browsers supported are IE, firefox
    -The required web drivers will be automatically downloaded and cached on first run. (Courtesy: webdrivermanager)
 
 2. To execute only one scenario using tag, add "-Dcucumber.options=<value>" to gradle command.
