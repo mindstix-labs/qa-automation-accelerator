@@ -12,7 +12,7 @@ branches:
 branches:
   only:
   - master
-  - stable
+  - v0.1-alpha
 notifications:
   email:
     recipients:
