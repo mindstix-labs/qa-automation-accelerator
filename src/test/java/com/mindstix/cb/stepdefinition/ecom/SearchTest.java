@@ -37,6 +37,8 @@ public class SearchTest {
 			case "Sign In":
 				context.logIn = context.homePage.clickOnSignInTab();
 				break;
+			default:
+				throw new RuntimeException("Invalid option " + clickableField);
 			}
 		}
 	}
@@ -57,6 +59,8 @@ public class SearchTest {
 		case "automationpractice.com/index.php?controller=search":
 			isOnPage = context.search.isOnPage(arg1);
 			break;
+		default:
+			throw new RuntimeException("Invalid option " + arg1);
 		}
 		Assert.assertTrue("User is not on expected page", isOnPage);
 	}
