@@ -1,8 +1,8 @@
 pipeline {
 	agent any
 	parameters {
-		choice(name: 'BROWSER', choices: 'chrome\nfirefox\nPhantomJS', description: 'Select Browser')
-		choice(name: 'MODE', choices: 'grid', description: 'Select browser mode')
+		choice(name: 'BROWSER', choices: 'chrome\nfirefox\nIE', description: 'Select Browser')
+		choice(name: 'MODE', choices: 'grid\nnormal', description: 'Select browser mode')
 		string(name: 'DRIVER', defaultValue: 'drivers/linux/chromedriver_2_33', description: 'Enter Driver Path')
         choice(name: 'TARGET', choices: 'www\nstaging\nstaging2', description: 'Select Environment')
         choice(name: 'SELENIUM_GRID_NODE', choices: '5\n1\n2\n3\n4\n6\n7\n8\n9\n10', description: 'Select number of Nodes want to register')
