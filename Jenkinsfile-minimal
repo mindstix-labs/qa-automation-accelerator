@@ -30,7 +30,7 @@ pipeline {
         	}
     		stage('Test') {
             		steps {
-            			sh "mvn clean"
+            			sh "./gradlew clean"
                 		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.driverPath=${params.DRIVER} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.options=\"${params.TAGS}\""
         	    	}
         	}
