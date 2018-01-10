@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	parameters {
-		choice(name: 'BROWSER', choices: 'chrome\nfirefox\nPhantomJS', description: 'Select Browser')
+		choice(name: 'BROWSER', choices: 'chrome\nfirefox\nIE', description: 'Select Browser')
 		choice(name: 'MODE', choices: 'grid', description: 'Select browser mode')
 		string(name: 'DRIVER', defaultValue: 'drivers/linux/chromedriver_2_33', description: 'Enter Driver Path')
        	choice(name: 'TARGET', choices: 'www\nstaging\nstaging2', description: 'Select Environment')
