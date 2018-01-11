@@ -32,6 +32,8 @@ dependencies {
 	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonDataformatVersion
 	compile group: 'org.yaml', name: 'snakeyaml', version: snakeYamlVersion
 	compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: webDriverManagerVersion
+	compile group: 'javax.mail', name: 'mail', version: '1.4.1'
+	compile group: 'org.freemarker', name: 'freemarker', version: '2.3.27-incubating'
 }
 
 test {
