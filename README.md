@@ -82,6 +82,8 @@ $ ./gradlew eclipse (for Eclipse)
 9. Once the job is complete, go to the specific build page. You would see **Cucumber reports** menu. Click to see report.
 10. For email triggers to work from Jenkins, you will need to change the target email address in Script (Jenkinsfile-minimal or whichever you pick in Script path above).
 
+> Too much just to get build run on Jenkins? We are working on simplifying it for you! See [Issue 30](https://github.com/mindstix-labs/selenium-accelerator/issues/30) 
+
 # How to utilize Selenium grid feature?
 1. Install docker using: https://docs.docker.com/engine/installation/#server
 2. Install docker-compose using: https://docs.docker.com/compose/install/
