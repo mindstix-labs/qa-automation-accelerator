@@ -4,6 +4,7 @@
     Instructions to setup docker, docker-compose are -
         https://docs.docker.com/engine/installation/#server
         https://docs.docker.com/compose/install/
+- Jenkins (2.88+) - See instructions here - https://jenkins.io/doc/pipeline/tour/getting-started/
 
 ------------------------Project Setup --------------------------------------------------
 
