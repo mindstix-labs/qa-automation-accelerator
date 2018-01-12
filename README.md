@@ -50,12 +50,14 @@ $ ./gradlew eclipse (for Eclipse)
 ```
 > Import the project in IDE after above steps generate required project setup files.
 
-# Reading reports
+# Where do I see reports?
 > Open: `build/reports/cucumberreport/index/index.html`
 
 > Alternatively, open courgette reports: `target/courgette-report/index.html`
 
-# Jenkins setup
+> The best reports are generated once you setup Jenkins with cucumber-reports plugin. We are working on getting these reports generated even for local builds. See [Issue 19](https://github.com/mindstix-labs/selenium-accelerator/issues/29)
+
+# How to utilize Jenkins pipeline feature?
 1. Setup Jenkins 2.88+. Refer https://jenkins.io/doc/pipeline/tour/getting-started/
 2. Install *cucumber-reporting* plugin by going to *Manage Jenkins -> Manage Plugins -> Available* -> Search for *cucumber-reporting*. Select the *cucumber-reporting* plugin. Click on Install (without restart works just fine)
 3. Install *Blue Ocean* plugin in similar way as above. Things will be much more beautiful this way!
@@ -66,6 +68,12 @@ $ ./gradlew eclipse (for Eclipse)
 8. Go to Job page. Build the job. Keep default parameters if asked.
 9. Once the job is complete, go to the specific build page. You would see **Cucumber reports** menu. Click to see report.
 10. For email triggers to work from Jenkins, you will need to change the target email address in Script (Jenkinsfile-minimal or whichever you pick in Script path above).
+
+# How to utilize Selenium grid feature?
+1. Install docker using: https://docs.docker.com/engine/installation/#server
+2. Install docker-compose using: https://docs.docker.com/compose/install/
+3. Once you have above installed, you can go ahead and setup Jenkins pipeline with grid capabilities (Jenkinsfile).
+4. For reference on commands fired from Jenkins pipeline, refer to docker-compose commands in Jenkinsfile.
 
 # Detailed Instructions
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
