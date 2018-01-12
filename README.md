@@ -33,17 +33,17 @@ $ ./gradlew clean build
 ```
 > Above steps will execute the tests in Chrome targetting www.automationpractice.com portal. It would take approximately 1 or 2 minutes to complete. At the end of this, you will see build failed. Do not panic! We have intentionally added one failing test as a sample.
 
-# Reading reports
-> Open: `build/reports/cucumberreport/index/index.html`
-
-> Alternatively, open courgette reports: `selenium-accelerator/target/courgette-report/index.html`
-
 # IDE setup
 ```sh
 $ ./gradlew idea (for IDEA)
 $ ./gradlew eclipse (for Eclipse)
 ```
 > Import the project in IDE after above steps generate required project setup files.
+
+# Reading reports
+> Open: `build/reports/cucumberreport/index/index.html`
+
+> Alternatively, open courgette reports: `target/courgette-report/index.html`
 
 # Detailed Instructions
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
