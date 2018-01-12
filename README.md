@@ -18,6 +18,21 @@
 12. Fully functional Jenkinsfile that can be used to setup a Jenkins pipeline
 13. Sample API tests using RestAssured
 
+# Pre-requisites
+> Java 8
+> docker, docker-compose - Optional for local development. Recommended for CI setup.
+> Jenkins - 2.88+
+
+# Quick start
+> git clone https://github.com/mindstix-labs/selenium-accelerator.git
+> cd selenium-accelerator
+> ./gradlew clean build
+
+# IDE setup
+> ./gradlew idea (for IDEA)
+> ./gradlew eclipse (for Eclipse)
+> Import the project in IDE after above steps generate required project setup files.
+
 # Detailed Instructions
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
 
