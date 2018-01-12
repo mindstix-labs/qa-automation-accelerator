@@ -1,5 +1,10 @@
 [![Build Status](https://travis-ci.org/mindstix-labs/selenium-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/selenium-accelerator)
 
+# Index
+1. [What and Why](#selenium-accelerator)
+2. [Features](#Features)
+3. [Pre-requisites](#Pre-requisites)
+
 # selenium-accelerator
 > Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
 
