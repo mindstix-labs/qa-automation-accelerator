@@ -19,7 +19,7 @@
 13. Sample API tests using RestAssured
 
 # Pre-requisites
-> Java 8
+> JDK 8
 
 > docker, docker-compose - Optional for local development. Recommended for CI setup.
 
@@ -27,15 +27,15 @@
 
 # Quick start
 ```sh
-git clone https://github.com/mindstix-labs/selenium-accelerator.git
-cd selenium-accelerator
-./gradlew clean build
+$ git clone https://github.com/mindstix-labs/selenium-accelerator.git
+$ cd selenium-accelerator
+$ ./gradlew clean build
 ```
 
 # IDE setup
 ```sh
-./gradlew idea (for IDEA)
-./gradlew eclipse (for Eclipse)
+$ ./gradlew idea (for IDEA)
+$ ./gradlew eclipse (for Eclipse)
 ```
 > Import the project in IDE after above steps generate required project setup files.
 
