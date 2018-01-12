@@ -70,6 +70,13 @@ $ ./gradlew eclipse (for Eclipse)
 
 > The best reports are generated once you setup Jenkins with cucumber-reports plugin. We are working on getting these reports generated even for local builds. See [Issue 19](https://github.com/mindstix-labs/selenium-accelerator/issues/29)
 
+# Report Samples
+[!Feature Stats](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-overview.png)
+[!Feature Passed](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-passed.png)
+[!Feature Failed](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-failed.png)
+[!Tag Stats](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-failed.png)
+[!Trend](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/trends.png)
+
 # How to utilize Jenkins pipeline feature?
 1. Setup Jenkins 2.88+. Refer https://jenkins.io/doc/pipeline/tour/getting-started/
 2. Install *cucumber-reporting* plugin by going to *Manage Jenkins -> Manage Plugins -> Available* -> Search for *cucumber-reporting*. Select the *cucumber-reporting* plugin. Click on Install (without restart works just fine)
