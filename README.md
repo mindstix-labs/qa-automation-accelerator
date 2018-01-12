@@ -76,7 +76,7 @@ $ ./gradlew eclipse (for Eclipse)
 
 There is a feature overview page:
 
-![feature overview page|50%](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-overview.png)
+![feature overview page|50x50](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-overview.png)
 
 And there are also feature specific results pages:
 
