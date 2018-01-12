@@ -71,16 +71,27 @@ $ ./gradlew eclipse (for Eclipse)
 > The best reports are generated once you setup Jenkins with cucumber-reports plugin. We are working on getting these reports generated even for local builds. See [Issue 19](https://github.com/mindstix-labs/selenium-accelerator/issues/29)
 
 # Report Samples
-Feature Stats
-![Feature Stats](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-overview.png)
-Feature Passed
-![Feature Passed](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-passed.png)
-Feature Failed
-![Feature Failed](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-failed.png)
-Tag Stats
-![Tag Stats](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-failed.png)
-Trend
-![Trend](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/trends.png)
+There is a feature overview page:
+
+![feature overview page](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-overview.png)
+
+And there are also feature specific results pages:
+
+![feature specific page passing](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-passed.png)
+
+And useful information for failures:
+
+![feature specific page passing](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-failed.png)
+
+If you have tags in your cucumber features you can see a tag overview:
+
+![Tag overview](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/tag-overview.png)
+
+And you can drill down into tag specific reports:
+
+![Tag report](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/tag-report.png)
+
+![Trends report](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/trends.png)
 
 # How to utilize Jenkins pipeline feature?
 1. Setup Jenkins 2.88+. Refer https://jenkins.io/doc/pipeline/tour/getting-started/
