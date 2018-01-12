@@ -7,7 +7,7 @@
 4. [Dependencies](#dependencies)
 5. [Quick start](#quick-start)
 6. [IDE setup](#ide-setup)
-7. [Where do I see reports](#where-do-i-see-reports)
+7. [Where do I see reports?](#where-do-i-see-reports)
 8. [How to utilize Jenkins pipeline feature?](#how-to-utilize-jenkins-pipeline-feature)
 9. [How to utilize Selenium grid feature?](#how-to-utilize-selenium-grid-feature)
 10. [Developer guide](#developer-guide)
