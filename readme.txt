@@ -4,6 +4,7 @@
     Instructions to setup docker, docker-compose are -
         https://docs.docker.com/engine/installation/#server
         https://docs.docker.com/compose/install/
+- Jenkins (2.88+) - See instructions here - https://jenkins.io/doc/pipeline/tour/getting-started/
 
 ------------------------Project Setup --------------------------------------------------
 
@@ -76,6 +77,7 @@
 
 7. CI
     Jenkinsfile is used to setup pipeline jobs on CI server.
+    Jenkinsfile-minimal : Uses gradle based trigger with minimal features - useful in developer's local environment.
     Jenkinsfile : Uses gradle based trigger which also takes care of grid setup/teardown.
     Jenkinsfile-nogrid : Uses gradle based trigger. Does not teardown grid. But starts it if down.
     The above files serve as ready references for basic steps, notifications.
