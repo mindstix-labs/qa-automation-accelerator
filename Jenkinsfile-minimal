@@ -68,8 +68,8 @@ def notifyBuild(String buildStatus = 'STARTED') {
      colorCode = '#FF0000'
    }
 
-    // Step for sending a Jenkins build notification through mail
-    mail (to: 'amit.mujawar@mindstix.com',
+    // Step for sending a Jenkins build notification through mail. Please update your email here.
+    mail (to: 'youremail@yourdomain.com',
     subject: subject,
     body: details);
 }
