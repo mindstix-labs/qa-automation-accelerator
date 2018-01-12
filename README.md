@@ -65,6 +65,7 @@ $ ./gradlew eclipse (for Eclipse)
 7. Save.
 8. Go to Job page. Build the job. Keep default parameters if asked.
 9. Once the job is complete, go to the specific build page. You would see **Cucumber reports** menu. Click to see report.
+10. For email triggers to work from Jenkins, you will need to change the target email address in Script (Jenkinsfile-minimal or whichever you pick in Script path above).
 
 # Detailed Instructions
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
