@@ -26,11 +26,10 @@
 > Jenkins - 2.88+
 
 # Quick start
-> git clone https://github.com/mindstix-labs/selenium-accelerator.git
-
-> cd selenium-accelerator
-
-> ./gradlew clean build
+> ``` sh
+git clone https://github.com/mindstix-labs/selenium-accelerator.git
+cd selenium-accelerator
+./gradlew clean build```
 
 # IDE setup
 > ./gradlew idea (for IDEA)
