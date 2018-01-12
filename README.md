@@ -1,9 +1,17 @@
 [![Build Status](https://travis-ci.org/mindstix-labs/selenium-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/selenium-accelerator)
 
 # Index
-1. [What and Why](#selenium-accelerator)
+1. [Introduction](#selenium-accelerator)
 2. [Features](#features)
 3. [Pre-requisites](#pre-requisites)
+4. [Dependencies](#dependencies)
+5. [Quick start](#quick-start)
+6. [IDE setup](#ide-setup)
+7. [Where do I see reports](#where-do-i-see-reports?)
+8. [How to utilize Jenkins pipeline feature?](#how-to-utilize-jenkins-pipeline-feature?)
+9. [How to utilize Selenium grid feature?](#how-to-utilize-selenium-grid-feature?)
+10. [Developer guide](#detailed-instructions)
+11. [License](#license)
 
 # selenium-accelerator
 > Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
@@ -80,7 +88,8 @@ $ ./gradlew eclipse (for Eclipse)
 3. Once you have above installed, you can go ahead and setup Jenkins pipeline with grid capabilities (Jenkinsfile).
 4. For reference on commands fired from Jenkins pipeline, refer to docker-compose commands in Jenkinsfile.
 
-# Detailed Instructions
+# Developer Guide
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
 
-# Licensed under MIT license
+# License
+> Licensed under MIT license
