@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/mindstix-labs/selenium-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/selenium-accelerator)
 
 # selenium-accelerator
-Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
+> Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
 
 
 # Features
@@ -31,6 +31,7 @@ Opinionated baseline to bootstrap selenium and cucumber based web application te
 
 13. Sample API tests using RestAssured
 
-For detailed instructions refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
+Detailed Instructions for Developers
+> Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
 
 # Licensed under MIT license
