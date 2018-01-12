@@ -8,10 +8,11 @@
 5. [Quick start](#quick-start)
 6. [IDE setup](#ide-setup)
 7. [Where do I see reports?](#where-do-i-see-reports)
-8. [How to utilize Jenkins pipeline feature?](#how-to-utilize-jenkins-pipeline-feature)
-9. [How to utilize Selenium grid feature?](#how-to-utilize-selenium-grid-feature)
-10. [Developer guide](#developer-guide)
-11. [License](#license)
+8. [Report Samples](#report-samples) 
+9. [How to utilize Jenkins pipeline feature?](#how-to-utilize-jenkins-pipeline-feature)
+10. [How to utilize Selenium grid feature?](#how-to-utilize-selenium-grid-feature)
+11. [Developer guide](#developer-guide)
+12. [License](#license)
 
 # selenium-accelerator
 > Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
@@ -71,6 +72,8 @@ $ ./gradlew eclipse (for Eclipse)
 > The best reports are generated once you setup Jenkins with cucumber-reports plugin. We are working on getting these reports generated even for local builds. See [Issue 19](https://github.com/mindstix-labs/selenium-accelerator/issues/29)
 
 # Report Samples
+> Courtesy: https://github.com/damianszczepanik/cucumber-reporting
+
 There is a feature overview page:
 
 ![feature overview page](https://github.com/damianszczepanik/cucumber-reporting/raw/master/.README/feature-overview.png)
