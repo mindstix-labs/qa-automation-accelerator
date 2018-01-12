@@ -25,6 +25,16 @@
 
 > Jenkins - 2.88+
 
+# Dependencies
+1. Cucumber - 1.2.5
+2. Selenium - 3.8.1
+3. Courgette - 1.4.3
+4. WebDriverManager - 2.0.1
+5. RestAssured - 3.0.6
+6. SnakeYaml - 1.8
+7. docker - 17
+8. docker-compose - 1.17
+
 # Quick start
 ```sh
 $ git clone https://github.com/mindstix-labs/selenium-accelerator.git
