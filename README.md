@@ -94,4 +94,4 @@ $ ./gradlew eclipse (for Eclipse)
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
 
 # License
-> Licensed under MIT license
+> Licensed under [MIT license](https://github.com/mindstix-labs/selenium-accelerator/blob/master/LICENSE)
