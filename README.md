@@ -26,16 +26,17 @@
 > Jenkins - 2.88+
 
 # Quick start
-> ``` sh
+```sh
 git clone https://github.com/mindstix-labs/selenium-accelerator.git
 cd selenium-accelerator
-./gradlew clean build```
+./gradlew clean build
+```
 
 # IDE setup
-> ./gradlew idea (for IDEA)
-
-> ./gradlew eclipse (for Eclipse)
-
+```sh
+./gradlew idea (for IDEA)
+./gradlew eclipse (for Eclipse)
+```
 > Import the project in IDE after above steps generate required project setup files.
 
 # Detailed Instructions
