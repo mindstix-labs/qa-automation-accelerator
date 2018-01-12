@@ -55,6 +55,17 @@ $ ./gradlew eclipse (for Eclipse)
 
 > Alternatively, open courgette reports: `target/courgette-report/index.html`
 
+# Jenkins setup
+1. Setup Jenkins 2.88+. Refer https://jenkins.io/doc/pipeline/tour/getting-started/
+2. Install cucumber-reporting plugin by going to Manage Jenkins -> Manage Plugins -> Available -> Search for cucumber-reporting. Select the cucumber-reporting plugin. Click on Install (without restart works just fine)
+3. Install Blue Ocean plugin in similar way as above. Things will be much more beautiful this way!
+4. Create a new pipeline job. Name it properly. Go to Pipeline section. Select pipeline script from SCM. Give the github URL. Add credentials using Add new or select existing.
+5. Branches to build: keep default - master.
+6. Script path: Jenkinsfile-minimal (good to start with, later you could try Jenkinsfile that is fully featured with docker-compose based selenium grid)
+7. Save.
+8. Go to Job page. Build the job. Keep default parameters if asked.
+9. Once the job is complete, go to the specific build page. You would see Cucumber reports menu. Click to see report.
+
 # Detailed Instructions
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
 
