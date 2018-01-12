@@ -31,6 +31,12 @@ $ git clone https://github.com/mindstix-labs/selenium-accelerator.git
 $ cd selenium-accelerator
 $ ./gradlew clean build
 ```
+> Above steps will execute the tests in Chrome targetting www.automationpractice.com portal. It would take approximately 1 or 2 minutes to complete. At the end of this, you will see build failed. Do not panic! We have intentionally added one failing test as a sample.
+
+# Reading reports
+> Open: `build/reports/cucumberreport/index/index.html`
+
+> Alternatively, open courgette reports: `selenium-accelerator/target/courgette-report/index.html`
 
 # IDE setup
 ```sh
