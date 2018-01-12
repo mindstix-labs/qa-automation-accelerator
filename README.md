@@ -12,7 +12,8 @@
 9. [How to utilize Jenkins pipeline feature?](#how-to-utilize-jenkins-pipeline-feature)
 10. [How to utilize Selenium grid feature?](#how-to-utilize-selenium-grid-feature)
 11. [Developer guide](#developer-guide)
-12. [License](#license)
+12. [Feedback](#suggest-a-feature-or-report-a-bug)
+13. [License](#license)
 
 # selenium-accelerator
 > Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
@@ -118,6 +119,9 @@ And you can drill down into tag specific reports:
 
 # Developer Guide
 > Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
+
+# Suggest a feature or report a bug
+> [Click to report](https://github.com/mindstix-labs/selenium-accelerator/issues/new)
 
 # License
 > Licensed under [MIT license](https://github.com/mindstix-labs/selenium-accelerator/blob/master/LICENSE)
