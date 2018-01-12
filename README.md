@@ -41,7 +41,7 @@ $ git clone https://github.com/mindstix-labs/selenium-accelerator.git
 $ cd selenium-accelerator
 $ ./gradlew clean build
 ```
-> Above steps will execute the tests in Chrome targetting www.automationpractice.com portal. It would take approximately 1 or 2 minutes to complete. At the end of this, you will see build failed. Do not panic! We have intentionally added one failing test as a sample.
+> Above steps will execute the tests in Chrome hitting www.automationpractice.com portal. It would take approximately 1 or 2 minutes to complete. At the end of this, you will see build failed. Do not panic! We have intentionally added one failing test as a sample.
 
 # IDE setup
 ```sh
