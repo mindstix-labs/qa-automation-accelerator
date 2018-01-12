@@ -31,6 +31,6 @@ Opinionated baseline to bootstrap selenium and cucumber based web application te
 
 13. Sample API tests using RestAssured
 
-For detailed instructions refer readme.txt
+For detailed instructions refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
 
 # Licensed under MIT license
