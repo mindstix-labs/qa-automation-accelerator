@@ -118,7 +118,7 @@ And you can drill down into tag specific reports:
 4. For reference on commands fired from Jenkins pipeline, refer to docker-compose commands in Jenkinsfile.
 
 # Developer Guide
-> Refer [readme.txt](https://github.com/mindstix-labs/selenium-accelerator/blob/master/readme.txt)
+> Refer Wiki [here](https://github.com/mindstix-labs/selenium-accelerator/wiki/Developer-Guide)
 
 # Suggest a feature or report a bug
 > [Click to report](https://github.com/mindstix-labs/selenium-accelerator/issues/new)
