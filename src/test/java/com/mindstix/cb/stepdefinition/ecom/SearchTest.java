@@ -71,7 +71,7 @@ public class SearchTest {
 		context.search = context.homePage.clickOnSearchButton();
 	}
 
-	@Then("^verifies all result product contain the word \"([^\"]*)\"$")
+	@Then("^Verifies that the results contain the word \"([^\"]*)\"$")
 	public void verifies_all_result_product_contain_the_word(String expectedProduct) {
 		boolean isExpectedProduct = context.search.verifyProduct(expectedProduct);
 		Assert.assertTrue("Expected product not present in search results", isExpectedProduct);
