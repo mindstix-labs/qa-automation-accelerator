@@ -120,6 +120,8 @@ And you can drill down into tag specific reports:
 # Developer Guide
 > Refer Wiki [here](https://github.com/mindstix-labs/selenium-accelerator/wiki/Developer-Guide)
 
+> For more topics related to development and design aspects, please refer Home page of wiki [Home](https://github.com/mindstix-labs/selenium-accelerator/wiki)
+
 # Suggest a feature or report a bug
 > [Click to report](https://github.com/mindstix-labs/selenium-accelerator/issues/new)
 
