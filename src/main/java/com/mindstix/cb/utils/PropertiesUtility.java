@@ -50,7 +50,7 @@ public final class PropertiesUtility {
 
 	private static List<SignatureCoordinates> allSignatureCoordinates;
 	private static boolean loadProperty = false;
-	
+
 	private static File file;
 	private static OutputStreamWriter outputStreamWriter;
 
@@ -70,7 +70,7 @@ public final class PropertiesUtility {
 	public static OutputStreamWriter getFileWriter() {
 		return outputStreamWriter;
 	}
-	
+
 	public static Properties getDriverProperties() {
 		return driverProperties;
 	}
@@ -82,7 +82,7 @@ public final class PropertiesUtility {
 	public static Properties getTestdata() {
 		return testData;
 	}
-	
+
 	public static Properties getEmailconfigs() {
 		return emailConfigs;
 	}
@@ -157,9 +157,8 @@ public final class PropertiesUtility {
 		} finally {
 			IOUtils.closeQuietly(dataInput);
 		}
-
 	}
-	
+
 	/**
 	 * Creates file for each thread to store report data
 	 */
@@ -178,7 +177,7 @@ public final class PropertiesUtility {
 			LOGGER.error("File operation failed", e);
 		}
 	}
-	
+
 	/**
 	 * Returns unique file for each thread
 	 * 
@@ -192,7 +191,7 @@ public final class PropertiesUtility {
 		filename = builder.toString();
 		file = new File(filename);
 	}
-	
+
 	public static String getRandomToken() {
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}

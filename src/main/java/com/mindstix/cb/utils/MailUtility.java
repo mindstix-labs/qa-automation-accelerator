@@ -17,9 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This Class used for
- * <li>Configuring mail</li>
- * <li>Sending mail</li>
+ * This Class used for <li>Configuring mail</li> <li>Sending mail</li>
  * 
  * @author Mindstix
  */
@@ -53,16 +51,15 @@ public final class MailUtility {
 
 		session = Session.getInstance(mailProperties, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(emailConfigs.getProperty("mailAddress"),
-						emailConfigs.getProperty("mailPassword"));
+				return new PasswordAuthentication(emailConfigs.getProperty("mailAddress"), emailConfigs.getProperty("mailPassword"));
 			}
 		});
 		LOGGER.info("Email properties have been configured successfully!");
 	}
 
 	/**
-	 * sendMail takes three parameters and sends mail with given recipients email
-	 * address, subject and body.
+	 * sendMail takes three parameters and sends mail with given recipients
+	 * email address, subject and body.
 	 * 
 	 * @param to
 	 * @param subject
