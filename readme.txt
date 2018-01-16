@@ -1,3 +1,5 @@
+NOTE: This document may be outdated - Please refer README.md or Wiki
+
 ------------------------------Pre-Requisites---------------------------------------------
 - Java 8 (lower version will not work since Selenium 3.5.3 needs Java 8)
 - docker, docker-compose - If utilizing the selenium-grid features, then need latest version of docker, docker-compose
@@ -8,15 +10,15 @@
 
 ------------------------Project Setup --------------------------------------------------
 
-1. Open terminal and run the following command to pull down a copy of the 'selenium-accelerator' repo :
+1. Open terminal and run the following command to pull down a copy of the 'qa-automation-accelerator' repo :
 
-	git clone https://github.com/mindstix-labs/selenium-accelerator.git
+	git clone https://github.com/mindstix-labs/qa-automation-accelerator.git
 
-2. Navigate to 'selenium-accelerator' directory and run following command to generate project structure based on your IDE:
+2. Navigate to 'qa-automation-accelerator' directory and run following command to generate project structure based on your IDE:
 
 	./gradlew eclipse OR ./gradlew idea
 
-3. Open 'selenium-accelerator' in Eclipse by doing : File > Import > Existing Projects into Workspace and browse to the ‘selenium-accelerator’ folder and open it.
+3. Open 'qa-automation-accelerator' in Eclipse by doing : File > Import > Existing Projects into Workspace and browse to the ‘qa-automation-accelerator’ folder and open it.
 
 4. To download gradle on system and to build project execute the following command : 
  
