@@ -20,7 +20,9 @@ import org.slf4j.LoggerFactory;
  * This Class used for
  * <li>Configuring mail</li>
  * <li>Sending mail</li>
- * 
+ * Before using MailUtility class update your email address and password in emailconfig.properties.
+ * You may also need to grant permission for sending email through 
+ * less secure Application from your email account
  * @author Mindstix
  */
 public final class MailUtility {
@@ -46,6 +48,9 @@ public final class MailUtility {
 	}
 
 	private static void configureMailDetails() {
+		if(emailConfigs.getProperty("mailAddress").equals("YOUR_EMAIL_ADDRESS")) {
+			throw new RuntimeException("emailconfig not initialized with credentials!");
+		}
 		mailProperties.put("mail.smtp.auth", "true");
 		mailProperties.put("mail.smtp.starttls.enable", "true");
 		mailProperties.put("mail.smtp.host", emailConfigs.getProperty("emailHost"));
