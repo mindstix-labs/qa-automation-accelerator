@@ -101,8 +101,9 @@ public final class DriverUtility {
 	 * 
 	 * @return chrome Web Driver
 	 */
+	@SuppressWarnings("deprecation")
 	private static WebDriver initChromeDriver() {
-		ChromeDriverManager.getInstance().version("2.33").setup();
+		ChromeDriverManager.getInstance().version("2.28").setup();
 		String mode = System.getProperty("env.mode");
 		ChromeOptions options = null;
 		WebDriver webDriver = null;
