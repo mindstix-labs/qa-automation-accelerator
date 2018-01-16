@@ -127,6 +127,7 @@ public final class PropertiesUtility {
 				emailConfigs.load(dataInput);
 				dataInput.close();
 				LOGGER.info("Loading Email config properties");
+				createReportDataFile();
 			} catch (Exception ex) {
 				LOGGER.error("An Exception occurred!", ex);
 			} finally {
@@ -162,7 +163,7 @@ public final class PropertiesUtility {
 	/**
 	 * Creates file for each thread to store report data
 	 */
-	public static void createReportDataFile() {
+	private static void createReportDataFile() {
 		generateUniqueFile();
 		try {
 			if (file.getParentFile().mkdirs()) {
