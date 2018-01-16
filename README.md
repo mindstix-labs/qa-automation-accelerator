@@ -15,7 +15,7 @@
 12. [Feedback](#suggest-a-feature-or-report-a-bug)
 13. [License](#license)
 
-# selenium-accelerator
+# qa-automation-accelerator
 > Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
 
 # Features
@@ -52,8 +52,8 @@
 
 # Quick start
 ```sh
-$ git clone https://github.com/mindstix-labs/selenium-accelerator.git
-$ cd selenium-accelerator
+$ git clone https://github.com/mindstix-labs/qa-automation-accelerator.git
+$ cd qa-automation-accelerator
 $ ./gradlew clean build
 ```
 > Above steps will execute the tests in Chrome hitting www.automationpractice.com portal. It would take approximately 1 or 2 minutes to complete. At the end of this, you will see build failed. Do not panic! We have intentionally added one failing test as a sample.
@@ -70,7 +70,7 @@ $ ./gradlew eclipse (for Eclipse)
 
 > Alternatively, open courgette reports: `target/courgette-report/index.html`
 
-> The best reports are generated once you setup Jenkins with cucumber-reports plugin. We are working on getting these reports generated even for local builds. See [Issue 19](https://github.com/mindstix-labs/selenium-accelerator/issues/29)
+> The best reports are generated once you setup Jenkins with cucumber-reports plugin. We are working on getting these reports generated even for local builds. See [Issue 19](https://github.com/mindstix-labs/qa-automation-accelerator/issues/29)
 
 # Report Samples
 > Courtesy: https://github.com/damianszczepanik/cucumber-reporting
@@ -109,7 +109,7 @@ And you can drill down into tag specific reports:
 9. Once the job is complete, go to the specific build page. You would see **Cucumber reports** menu. Click to see report.
 10. For email triggers to work from Jenkins, you will need to change the target email address in Script (Jenkinsfile-minimal or whichever you pick in Script path above).
 
-> Too much just to get build run on Jenkins? We are working on simplifying it for you! See [Issue 30](https://github.com/mindstix-labs/selenium-accelerator/issues/30) 
+> Too much just to get build run on Jenkins? We are working on simplifying it for you! See [Issue 30](https://github.com/mindstix-labs/qa-automation-accelerator/issues/30) 
 
 # How to utilize Selenium grid feature?
 1. Install docker using: https://docs.docker.com/engine/installation/#server
@@ -118,10 +118,12 @@ And you can drill down into tag specific reports:
 4. For reference on commands fired from Jenkins pipeline, refer to docker-compose commands in Jenkinsfile.
 
 # Developer Guide
-> Refer Wiki [here](https://github.com/mindstix-labs/selenium-accelerator/wiki/Developer-Guide)
+> Refer Wiki [here](https://github.com/mindstix-labs/qa-automation-accelerator/wiki/Developer-Guide)
+
+> For more topics related to development and design aspects, please refer Home page of wiki [Home](https://github.com/mindstix-labs/qa-automation-accelerator/wiki)
 
 # Suggest a feature or report a bug
-> [Click to report](https://github.com/mindstix-labs/selenium-accelerator/issues/new)
+> [Click to report](https://github.com/mindstix-labs/qa-automation-accelerator/issues/new)
 
 # License
-> Licensed under [MIT license](https://github.com/mindstix-labs/selenium-accelerator/blob/master/LICENSE)
+> Licensed under [MIT license](https://github.com/mindstix-labs/qa-automation-accelerator/blob/master/LICENSE)
