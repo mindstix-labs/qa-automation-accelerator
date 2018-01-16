@@ -42,6 +42,7 @@ public final class PropertiesUtility {
 	private static final Properties driverProperties;
 	private static final Properties selectors;
 	private static final Properties testData;
+	private static final Properties emailConfigs;
 
 	private static Yaml yamlSignature;
 
@@ -57,6 +58,7 @@ public final class PropertiesUtility {
 		driverProperties = new Properties();
 		selectors = new Properties();
 		testData = new Properties();
+		emailConfigs = new Properties();
 		loadPoperties();
 		loadSignatureData();
 	}
@@ -79,6 +81,10 @@ public final class PropertiesUtility {
 
 	public static Properties getTestdata() {
 		return testData;
+	}
+	
+	public static Properties getEmailconfigs() {
+		return emailConfigs;
 	}
 
 	/**
@@ -117,6 +123,10 @@ public final class PropertiesUtility {
 				testData.load(dataInput);
 				dataInput.close();
 				LOGGER.info("Loading Test Data properties");
+				dataInput = new FileInputStream("src/test/resources/emailconfig.properties");
+				emailConfigs.load(dataInput);
+				dataInput.close();
+				LOGGER.info("Loading Email config properties");
 			} catch (Exception ex) {
 				LOGGER.error("An Exception occurred!", ex);
 			} finally {
