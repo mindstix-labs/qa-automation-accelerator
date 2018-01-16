@@ -84,8 +84,8 @@ def notifyBuild(String buildStatus = 'STARTED') {
    // We need to first configure Jenkins with "Incoming Webhook" link of slack channel to send cucumber report.
    cucumberSlackSend channel: '#jenkins-notifications', json: 'build/reports/cucumberreport/cucumber.json'
 
-    // Step for sending a Jenkins build notification through mail
-    mail (to: 'amit.mujawar@mindstix.com',
+    // Step for sending a Jenkins build notification through mail. Please change the email id!
+    mail (to: 'yourname@yourdomain.com',
     subject: subject,
     body: details);
 }
