@@ -61,8 +61,8 @@ public abstract class BaseScenarioContext {
 	}
 
 	/**
-	 * Method which will execute after each scenario after execution of each
-	 * Takes screenshot when Scenario fails and saves it into HTML report
+	 * Method which will execute after each scenario after execution of each Takes
+	 * screenshot when Scenario fails and saves it into HTML report
 	 * 
 	 * @param scenario
 	 */
@@ -72,9 +72,12 @@ public abstract class BaseScenarioContext {
 				byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
 				scenario.embed(screenshot, "image/png");
 				LOGGER.info("Test Case Failed. Screenshot will be saved in build/reports/cucumberreport/cucumber");
+				testResult = "Failed";
 			} catch (Exception ex) {
 				LOGGER.error("Exception while getting screenshot", ex);
 			}
+		} else {
+			testResult = "Pass";
 		}
 		if (webDriver != null) {
 			stopWatch.stop();
@@ -92,7 +95,6 @@ public abstract class BaseScenarioContext {
 		Map<String, Object> data = new HashMap<String, Object>();
 		if (scenario.equals("")) {
 			scenario = "NA";
-			LOGGER.info("Scenario is Null");
 		}
 		data.put("scenario", scenario);
 		data.put("allProductID", allProductID);

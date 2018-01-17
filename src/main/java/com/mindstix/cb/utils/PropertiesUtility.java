@@ -185,7 +185,7 @@ public final class PropertiesUtility {
 	}
 
 	/**
-	 * Returns unique file for each thread
+	 * Returns unique file
 	 * 
 	 * @return unique file
 	 */
