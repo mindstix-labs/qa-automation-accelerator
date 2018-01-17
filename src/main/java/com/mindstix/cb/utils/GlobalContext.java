@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -69,6 +70,7 @@ public final class GlobalContext {
 		Constructor reportConstructor = new Constructor(Report.class);
 		Map<String, Object> dataModel = new HashMap<String, Object>();
 		File[] files = reportDirectory.listFiles();
+		boolean isReportDataAvailable = false;
 		if (files != null && files.length > 1) {
 			for (File reportFile : files) {
 				try {
@@ -80,13 +82,14 @@ public final class GlobalContext {
 						if (report != null) {
 							dataModel.put("report", report.getReport());
 							FreeMarkerUtility.processTemplateInFile(dataModel, "reportData.ftl", true);
+							isReportDataAvailable = true;
 						}
 					}
 				} catch (Exception e) {
 					LOGGER.error("Operation failed while reading file {}", reportFile.getName(), e);
 				}
 			}
-		} else {
+		} if(!isReportDataAvailable) {
 			throw new RuntimeException("Report is not avilable for current build");
 		}
 	}
@@ -98,7 +101,7 @@ public final class GlobalContext {
 
 	public static void emailReportTo(String to) {
 		try {
-			String report = new String(Files.readAllBytes(Paths.get(PropertiesUtility.getEmailconfigs().getProperty("finalReportHTMLFile"))), "UTF-8");
+			String report = new String(Files.readAllBytes(Paths.get(PropertiesUtility.getEmailconfigs().getProperty("finalReportHTMLFile"))), StandardCharsets.UTF_8);
 			MailUtility.sendMail(to, "Report from Last Build", report);
 		} catch (IOException e) {
 			LOGGER.error("Operation failed while fetching report", e);
