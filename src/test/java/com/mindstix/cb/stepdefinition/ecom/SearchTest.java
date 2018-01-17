@@ -68,6 +68,7 @@ public class SearchTest {
 	@When("^User searches for \"([^\"]*)\"$")
 	public void user_search_for(String searchField) {
 		context.homePage.enterSearchKeyWord(searchField);
+		context.allProductID.add(searchField);
 		context.search = context.homePage.clickOnSearchButton();
 	}
 
