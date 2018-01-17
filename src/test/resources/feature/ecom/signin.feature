@@ -1,6 +1,6 @@
 Feature: Feature to test sign in scenarios
 
-@cbt @ecom @signin
+@web @cbt @ecom @signin @web-001 @smoke
 Scenario Outline:
 	Given User is browsing 'Automation Practice' website
 	When User clicks "Sign In" on "Homepage" 

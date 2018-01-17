@@ -1,8 +1,8 @@
-Feature: Feature to test seaching scenarios
+Feature: Feature to test searching scenarios
 
-@cbt @ecom @search
+@cbt @ecom @search @web-002 @smoke
 Scenario: 
 	Given User is browsing 'Automation Practice' website
 	When User searches for "Dress"
 	Then User lands on "automationpractice.com/index.php?controller=search" Page
-	And verifies all result product contain the word "Dress"
+	And Verifies that the results contain the word "Dress"

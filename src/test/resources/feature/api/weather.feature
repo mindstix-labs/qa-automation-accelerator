@@ -3,7 +3,7 @@ Feature: Test Weather API.
 Background:
 	Given API baseUrl "http://restapi.demoqa.com/utilities/weather/city/"
 
-@api @cbt
+@api @cbt @api-001 @smoke
 Scenario Outline:
 	Given City of "<city>"
     And invoke weather API
