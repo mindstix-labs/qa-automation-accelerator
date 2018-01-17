@@ -49,7 +49,8 @@ public final class PropertiesUtility {
 	private static Signature signature;
 
 	private static List<SignatureCoordinates> allSignatureCoordinates;
-	private static boolean loadProperty = false;
+	private static boolean arePropertiesLoaded = false;
+	private static boolean isReportDataFileCreated = false;
 
 	private static File file;
 	private static OutputStreamWriter outputStreamWriter;
@@ -61,6 +62,7 @@ public final class PropertiesUtility {
 		emailConfigs = new Properties();
 		loadPoperties();
 		loadSignatureData();
+		createReportDataFile();
 	}
 
 	private PropertiesUtility() {
@@ -110,24 +112,25 @@ public final class PropertiesUtility {
 	 */
 	private static void loadPoperties() {
 		InputStream dataInput = null;
-		if (!loadProperty) {
+		if (!arePropertiesLoaded) {
 			try {
 				dataInput = new FileInputStream("src/test/resources/driverconfig.properties");
 				driverProperties.load(dataInput);
 				dataInput.close();
+				LOGGER.info("Loaded driver properties");
 				dataInput = new FileInputStream("src/test/resources/selectors.properties");
 				selectors.load(dataInput);
 				dataInput.close();
-				LOGGER.info("Loading Selector properties");
+				LOGGER.info("Loaded selector properties");
 				dataInput = new FileInputStream("src/test/resources/testdata/testdata.properties");
 				testData.load(dataInput);
 				dataInput.close();
-				LOGGER.info("Loading Test Data properties");
+				LOGGER.info("Loaded test data properties");
 				dataInput = new FileInputStream("src/test/resources/emailconfig.properties");
 				emailConfigs.load(dataInput);
 				dataInput.close();
-				LOGGER.info("Loading Email config properties");
-				createReportDataFile();
+				LOGGER.info("Loaded email config properties");
+				arePropertiesLoaded = true;
 			} catch (Exception ex) {
 				LOGGER.error("An Exception occurred!", ex);
 			} finally {
@@ -163,18 +166,21 @@ public final class PropertiesUtility {
 	 * Creates file for each thread to store report data
 	 */
 	private static void createReportDataFile() {
-		generateUniqueFile();
-		try {
-			if (file.getParentFile().mkdirs()) {
-				LOGGER.info("Report directory created successfully!");
+		if (!isReportDataFileCreated) {
+			generateUniqueFile();
+			try {
+				if (file.getParentFile().mkdirs()) {
+					LOGGER.info("Report directory created successfully!");
+				}
+				LOGGER.info("Creating report file {}...", file.getName());
+				FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+				outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
+				outputStreamWriter.write("report: \n");
+				LOGGER.info("Report File {} created successfully!", file.getName());
+				isReportDataFileCreated = true;
+			} catch (Exception e) {
+				LOGGER.error("File operation failed", e);
 			}
-			LOGGER.info("Creating report file {}...", file.getName());
-			FileOutputStream fileOutputStream = new FileOutputStream(file, true);
-			outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
-			outputStreamWriter.write("report: \n");
-			LOGGER.info("Report File {} created successfully!", file.getName());
-		} catch (Exception e) {
-			LOGGER.error("File operation failed", e);
 		}
 	}
 
