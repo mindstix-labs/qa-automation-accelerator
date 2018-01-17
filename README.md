@@ -18,6 +18,8 @@
 # qa-automation-accelerator
 > A **_cloud-scale_**, **_opinionated_**, test automation framework for **_Web_**, **_APIs_**, and **_Micro Services_**. Strongly aligned with the **_DevOps-way_** of doing things
 
+> *Disclaimer:* This is work in progress at this stage.
+
 # Features
 1. Selenium + Cucumber based automation test examples for automationpractice.com
 2. Demonstrates use of BDD style tests using cucumber
