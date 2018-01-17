@@ -4,11 +4,16 @@
 package com.mindstix.cb.utils;
 
 import java.awt.*;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -46,6 +51,9 @@ public final class PropertiesUtility {
 	private static List<SignatureCoordinates> allSignatureCoordinates;
 	private static boolean loadProperty = false;
 
+	private static File file;
+	private static OutputStreamWriter outputStreamWriter;
+
 	static {
 		driverProperties = new Properties();
 		selectors = new Properties();
@@ -59,6 +67,10 @@ public final class PropertiesUtility {
 
 	}
 
+	public static OutputStreamWriter getFileWriter() {
+		return outputStreamWriter;
+	}
+
 	public static Properties getDriverProperties() {
 		return driverProperties;
 	}
@@ -70,7 +82,7 @@ public final class PropertiesUtility {
 	public static Properties getTestdata() {
 		return testData;
 	}
-	
+
 	public static Properties getEmailconfigs() {
 		return emailConfigs;
 	}
@@ -115,6 +127,7 @@ public final class PropertiesUtility {
 				emailConfigs.load(dataInput);
 				dataInput.close();
 				LOGGER.info("Loading Email config properties");
+				createReportDataFile();
 			} catch (Exception ex) {
 				LOGGER.error("An Exception occurred!", ex);
 			} finally {
@@ -144,6 +157,42 @@ public final class PropertiesUtility {
 		} finally {
 			IOUtils.closeQuietly(dataInput);
 		}
+	}
 
+	/**
+	 * Creates file for each thread to store report data
+	 */
+	private static void createReportDataFile() {
+		generateUniqueFile();
+		try {
+			if (file.getParentFile().mkdirs()) {
+				LOGGER.info("Report directory created successfully!");
+			}
+			LOGGER.info("Creating report file {}...", file.getName());
+			FileOutputStream fileOutputStream = new FileOutputStream(file, true);
+			outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
+			outputStreamWriter.write("report: \n");
+			LOGGER.info("Report File {} created successfully!", file.getName());
+		} catch (Exception e) {
+			LOGGER.error("File operation failed", e);
+		}
+	}
+
+	/**
+	 * Returns unique file for each thread
+	 * 
+	 * @return unique file
+	 */
+	public static void generateUniqueFile() {
+		String filename = emailConfigs.getProperty("reportDataFile");
+		StringBuilder builder = new StringBuilder(filename);
+		builder.append(getRandomToken());
+		builder.append(".yaml");
+		filename = builder.toString();
+		file = new File(filename);
+	}
+
+	public static String getRandomToken() {
+		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
 }
