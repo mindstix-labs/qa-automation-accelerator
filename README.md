@@ -16,7 +16,7 @@
 13. [License](#license)
 
 # qa-automation-accelerator
-> A *cloud-scale*, *opinionated*, test automation framework for *Web*, *APIs*, and *Micro Services*. Strongly aligned with the *DevOps-way* of doing things
+> A **_cloud-scale_**, **_opinionated_**, test automation framework for **_Web_**, **_APIs_**, and **_Micro Services_**. Strongly aligned with the **_DevOps-way_** of doing things
 
 # Features
 1. Selenium + Cucumber based automation test examples for automationpractice.com
