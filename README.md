@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mindstix-labs/selenium-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/selenium-accelerator)
+[![Build Status](https://travis-ci.org/mindstix-labs/qa-automation-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/qa-automation-accelerator)
 
 # Index
 1. [Introduction](#selenium-accelerator)
