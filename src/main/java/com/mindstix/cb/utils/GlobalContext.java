@@ -55,7 +55,7 @@ public final class GlobalContext {
 	}
 
 	public static void setupReportHeader() {
-		LOGGER.info("Setting up report header!");
+		LOGGER.info("Setting up report header");
 		Map<String, Object> emailHeader = new HashMap<String, Object>();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy hh:mm:ss z");
 		Date localDate = new Date();
@@ -89,13 +89,14 @@ public final class GlobalContext {
 					LOGGER.error("Operation failed while reading file {}", reportFile.getName(), e);
 				}
 			}
-		} if(!isReportDataAvailable) {
-			throw new RuntimeException("Report is not avilable for current build");
+		}
+		if (!isReportDataAvailable) {
+			throw new RuntimeException("Report is not available for current build");
 		}
 	}
 
 	public static void setupReportFooter() {
-		LOGGER.info("Setting up report footer!");
+		LOGGER.info("Setting up report footer");
 		FreeMarkerUtility.processTemplateInFile("emailfooter.ftl", true);
 	}
 

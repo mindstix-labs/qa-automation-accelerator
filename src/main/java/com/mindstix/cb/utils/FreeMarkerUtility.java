@@ -52,7 +52,7 @@ public final class FreeMarkerUtility {
 		configuration.setDefaultEncoding("UTF-8");
 		configuration.setLocale(Locale.US);
 		configuration.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-		LOGGER.info("Freemarker configurations loaded successfully!");
+		LOGGER.info("Freemarker configurations loaded successfully");
 	}
 
 	public static void processTemplateInFile(String templateName, boolean append) {
@@ -64,9 +64,9 @@ public final class FreeMarkerUtility {
 			Template template = configuration.getTemplate(templateName);
 			template.dump(outputStreamWriter);
 			outputStreamWriter.close();
-			LOGGER.info("Template loaded and processed successfully!");
+			LOGGER.info("Template loaded and processed successfully");
 		} catch (Exception e) {
-			LOGGER.error("Operation failed!", e);
+			LOGGER.error("Operation failed", e);
 		}
 	}
 
@@ -78,9 +78,9 @@ public final class FreeMarkerUtility {
 			Template template = configuration.getTemplate(templateName);
 			template.process(dataModel, outputStreamWriter);
 			outputStreamWriter.close();
-			LOGGER.info("Template loaded and processed successfully!");
+			LOGGER.info("Template loaded and processed successfully");
 		} catch (Exception e) {
-			LOGGER.error("Operation failed!", e);
+			LOGGER.error("Operation failed", e);
 		}
 	}
 }

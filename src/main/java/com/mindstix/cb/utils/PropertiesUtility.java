@@ -132,7 +132,7 @@ public final class PropertiesUtility {
 				LOGGER.info("Loaded email config properties");
 				arePropertiesLoaded = true;
 			} catch (Exception ex) {
-				LOGGER.error("An Exception occurred!", ex);
+				LOGGER.error("An Exception occurred", ex);
 			} finally {
 				IOUtils.closeQuietly(dataInput);
 			}
@@ -156,7 +156,7 @@ public final class PropertiesUtility {
 			allSignatureCoordinates = signature.getSignatures();
 			LOGGER.info("Loaded Signature Coordinates Data");
 		} catch (IOException ex) {
-			LOGGER.error("File not found!", ex);
+			LOGGER.error("File not found", ex);
 		} finally {
 			IOUtils.closeQuietly(dataInput);
 		}
@@ -170,13 +170,13 @@ public final class PropertiesUtility {
 			generateUniqueFile();
 			try {
 				if (file.getParentFile().mkdirs()) {
-					LOGGER.info("Report directory created successfully!");
+					LOGGER.info("Report directory created successfully");
 				}
 				LOGGER.info("Creating report file {}...", file.getName());
 				FileOutputStream fileOutputStream = new FileOutputStream(file, true);
 				outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
 				outputStreamWriter.write("report: \n");
-				LOGGER.info("Report File {} created successfully!", file.getName());
+				LOGGER.info("Report File {} created successfully", file.getName());
 				isReportDataFileCreated = true;
 			} catch (Exception e) {
 				LOGGER.error("File operation failed", e);
