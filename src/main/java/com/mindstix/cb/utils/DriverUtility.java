@@ -111,7 +111,7 @@ public final class DriverUtility {
 			case "normal":
 				DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome();
 				handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-				webDriver = new ChromeDriver(handlSSLErr);
+				webDriver = new ChromeDriver();
 				break;
 			case "headless":
 				options = new ChromeOptions();
@@ -138,6 +138,9 @@ public final class DriverUtility {
 				webDriver = new ChromeDriver();
 				break;
 			}
+		}else {
+			LOGGER.warn("No Mode selected for browser");
+			webDriver = new ChromeDriver();
 		}
 		return webDriver;
 	}
