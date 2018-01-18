@@ -18,6 +18,8 @@
 # qa-automation-accelerator
 > A **_cloud-scale_**, **_opinionated_**, test automation framework for **_Web_**, **_APIs_**, and **_Micro Services_**. Strongly aligned with the **_DevOps-way_** of doing things
 
+> Aim is to provide out-of-box **_patterns_** and reference implementation to **_accelerate_** test automation and to drive best practices
+
 > *Disclaimer:* This is work in progress at this stage.
 
 # Features
