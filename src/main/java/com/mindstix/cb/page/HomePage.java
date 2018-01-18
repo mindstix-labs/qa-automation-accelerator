@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * Represents Automation Practice Home Page
- * <li>automationpractice.com/index.php</li>
+ * Represents Automation Practice Home Page <li>automationpractice.com/index.php
+ * </li>
  * 
  * @author Mindstix
  */
@@ -45,5 +45,4 @@ public class HomePage extends BasePage {
 		scrollAndClick(searchButton);
 		return new Search(webDriver);
 	}
-
 }

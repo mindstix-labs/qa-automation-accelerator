@@ -42,8 +42,8 @@ public final class DriverUtility {
 	}
 
 	/**
-	 * Method to load properties according to mentioned Browser Name and Initialize
-	 * Web Driver
+	 * Method to load properties according to mentioned Browser Name and
+	 * Initialize Web Driver
 	 * 
 	 * @param browserName
 	 *            -Name of Browser Mentioned in testng.xml
@@ -73,9 +73,11 @@ public final class DriverUtility {
 	}
 
 	/**
-	 * To initialize Web Driver according to value of browserName provided in .xml
+	 * To initialize Web Driver according to value of browserName provided in
+	 * .xml
 	 * 
-	 * @param browserType Browser Name
+	 * @param browserType
+	 *            Browser Name
 	 */
 	private static WebDriver initDriver(String browserType) {
 		WebDriver webDriver;
