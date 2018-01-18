@@ -78,8 +78,8 @@ public abstract class BasePage {
 	 * 
 	 * @param webElementKey
 	 *            -The XPath which must Present on Web Page
-	 * @return WebElement element -Will Return WebElement which is present on Web
-	 *         Page with Mentioned XPath
+	 * @return WebElement element -Will Return WebElement which is present on
+	 *         Web Page with Mentioned XPath
 	 */
 	public WebElement getElementByXPath(String webElementKey) {
 		stopWatch = new StopWatch();
@@ -96,12 +96,13 @@ public abstract class BasePage {
 	}
 
 	/**
-	 * To get WebElement by specifying CSS Selector of Element Present on Web Page
+	 * To get WebElement by specifying CSS Selector of Element Present on Web
+	 * Page
 	 * 
 	 * @param webElementKey
 	 *            -The CSS Selector which must Present on Web Page
-	 * @return WebElement element -Will Return WebElement which is present on Web
-	 *         Page with Mentioned CssSelector
+	 * @return WebElement element -Will Return WebElement which is present on
+	 *         Web Page with Mentioned CssSelector
 	 */
 	public WebElement getElementByCSS(String webElementKey) {
 		stopWatch = new StopWatch();
@@ -118,15 +119,15 @@ public abstract class BasePage {
 	}
 
 	/**
-	 * To get WebElement by specifying prefix of selector and key of cssSelctor of
-	 * Element Present on Web Page
+	 * To get WebElement by specifying prefix of selector and key of cssSelctor
+	 * of Element Present on Web Page
 	 * 
 	 * @param webElementKey
 	 *            -The key of CSS Selector which must be Present on Web Page
 	 * @param prefix
 	 *            -The prefix of cssSelector
-	 * @return WebElement element -Will Return WebElement which is present on Web
-	 *         Page with Mentioned CssSelector
+	 * @return WebElement element -Will Return WebElement which is present on
+	 *         Web Page with Mentioned CssSelector
 	 */
 	public WebElement getElementByCSS(String prefix, String webElementKey) {
 		stopWatch = new StopWatch();
@@ -144,8 +145,7 @@ public abstract class BasePage {
 		stopWatch = new StopWatch();
 		stopWatch.start();
 		WebDriverWait webDriverWait = new WebDriverWait(webDriver, 30);
-		webDriverWait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.cssSelector(getSelectors(prefix) + index + getSelectors(suffix))));
+		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getSelectors(prefix) + index + getSelectors(suffix))));
 		WebElement element = webDriver.findElement(By.cssSelector(getSelectors(prefix) + index + getSelectors(suffix)));
 		LOGGER.info("Located Web Element");
 		jScriptExecutor = (JavascriptExecutor) webDriver;
@@ -156,8 +156,8 @@ public abstract class BasePage {
 	}
 
 	/**
-	 * Method to get Array of WebElement by specifying XPath of Elements Present on
-	 * Web Page
+	 * Method to get Array of WebElement by specifying XPath of Elements Present
+	 * on Web Page
 	 * 
 	 * @param webElementKey
 	 *            -XPath of Elements Present on Web Page
@@ -200,8 +200,7 @@ public abstract class BasePage {
 			WebDriverWait webDriverWait = new WebDriverWait(webDriver, 30);
 			webDriverWait.ignoring(NoSuchElementException.class);
 			webDriverWait.ignoring(TimeoutException.class);
-			webDriverWait
-					.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getSelectors(webElementKey))));
+			webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(getSelectors(webElementKey))));
 			dropDownList = webDriver.findElements(By.cssSelector(getSelectors(webElementKey)));
 			stopWatch.stop();
 			LOGGER.info("Time taken to load element is {} Milliseconds", stopWatch.getTime());
@@ -232,8 +231,7 @@ public abstract class BasePage {
 			WebDriverWait webDriverWait = new WebDriverWait(webDriver, 30);
 			webDriverWait.ignoring(NoSuchElementException.class);
 			webDriverWait.ignoring(TimeoutException.class);
-			webDriverWait.until(ExpectedConditions
-					.visibilityOfElementLocated(By.cssSelector(suffix + getSelectors(webElementKey))));
+			webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(suffix + getSelectors(webElementKey))));
 			dropDownList = webDriver.findElements(By.cssSelector(suffix + getSelectors(webElementKey)));
 			stopWatch.stop();
 			LOGGER.info(suffix + getSelectors(webElementKey));
@@ -262,8 +260,8 @@ public abstract class BasePage {
 	 * 
 	 * @param webElementKey
 	 *            -The LinkText of element which is Present on Web Page
-	 * @return WebElement element -Will Return WebElement which is present on Web
-	 *         Page with Mentioned LinkText
+	 * @return WebElement element -Will Return WebElement which is present on
+	 *         Web Page with Mentioned LinkText
 	 */
 	public WebElement getElementByLink(String webElementKey) {
 		stopWatch = new StopWatch();
@@ -417,6 +415,15 @@ public abstract class BasePage {
 		webElementSelect.selectByVisibleText(value);
 	}
 
+	/**
+	 * Used to draw a signature on canvas
+	 * 
+	 * @param webElementKey
+	 *            Selector key for canvas element
+	 * @param signatureID
+	 *            Signature ID mentioned in YML file to get the coordinates to
+	 *            draw signature
+	 */
 	public void drawOnCanvas(String webElementKey, String signatureID) {
 		List<Point> points = PropertiesUtility.getSignatureCoordinates(signatureID);
 		WebElement canvas = getElementByCSS(webElementKey);
@@ -428,6 +435,12 @@ public abstract class BasePage {
 		drawAction.release().perform();
 	}
 
+	/**
+	 * Used to get Doller value by excluding $ sign
+	 * 
+	 * @param webElementKey
+	 * @return floating value
+	 */
 	public float getDollerAmountByCSS(String webElementKey) {
 		float amount;
 		webElementKey = getElementByCSS(webElementKey).getText();
@@ -437,6 +450,13 @@ public abstract class BasePage {
 		return amount;
 	}
 
+	/**
+	 * Used to compare two float values
+	 * 
+	 * @param n1
+	 * @param n2
+	 * @return
+	 */
 	public boolean isEqual(float n1, float n2) {
 		return Math.abs(n1 - n2) < 0.0001;
 	}

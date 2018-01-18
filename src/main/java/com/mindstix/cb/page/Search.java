@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Represents Search Result Page
+ * Represents Search Result Page 
  * <li>automationpractice.com/index.php?controller=search</li>
  * 
  * @author Mindstix
