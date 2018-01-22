@@ -68,7 +68,7 @@ test {
 		cucumberOptions = '--tags @cbt'
 	}
 	def platform = System.getProperty("env.platform");
-	if(platform == null || tags == ''){
+	if(platform == null || platform == ''){
 		platform = 'local'
 	}
 	systemProperties 'env.browser': browser
