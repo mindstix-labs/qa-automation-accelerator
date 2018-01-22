@@ -68,7 +68,7 @@ test {
 		cucumberOptions = '--tags @cbt'
 	}
 	def platform = System.getProperty("env.platform");
-	if(platform == null || tags == ''){
+	if(platform == null || cucumberOptions == ''){
 		platform = 'local'
 	}
 	systemProperties 'env.browser': browser
@@ -83,7 +83,6 @@ test {
 	systemProperties 'cucumber.options': cucumberOptions
 	systemProperties 'file.encoding': 'utf-8'
 	systemProperties 'env.platform': platform
-	systemProperties 'cucumber.options': tags
 	include '**/*Courgette.class'
 
     outputs.upToDateWhen { false }
