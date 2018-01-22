@@ -187,7 +187,12 @@ public final class DriverUtility {
 	 * @return Web Driver
 	 */
 	private static WebDriver initBrowserStack() {
-		LOGGER.info("Inittializing browserstack");
+		LOGGER.info("Initializing browserstack");
+		try {
+			Thread.sleep(30000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		WebDriver webDriver = null;
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		String username = System.getenv("BROWSERSTACK_USER");
