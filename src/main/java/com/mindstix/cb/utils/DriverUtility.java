@@ -187,12 +187,7 @@ public final class DriverUtility {
 	 * @return Web Driver
 	 */
 	private static WebDriver initBrowserStack() {
-		LOGGER.info("Initializing browserstack");
-		try {
-			Thread.sleep(30000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+		LOGGER.info("Inittializing browserstack");
 		WebDriver webDriver = null;
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		String username = System.getenv("BROWSERSTACK_USER");
@@ -203,7 +198,7 @@ public final class DriverUtility {
 		String os = System.getProperty("os.name");
 		os = os.split(" ", 2)[0];
 		capabilities.setCapability("browser", browser);
-		capabilities.setCapability("os", "OS X");
+		capabilities.setCapability("os", os);
 		capabilities.setCapability("browserstack.local", browserstackLocal);
 		capabilities.setCapability("browserstack.localIdentifier", browserstackLocalIdentifier);
 		try {
