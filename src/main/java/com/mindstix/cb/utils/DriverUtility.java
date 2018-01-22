@@ -198,7 +198,7 @@ public final class DriverUtility {
 		String os = System.getProperty("os.name");
 		os = os.split(" ", 2)[0];
 		capabilities.setCapability("browser", browser);
-		capabilities.setCapability("os", os);
+		capabilities.setCapability("os", "OS X");
 		capabilities.setCapability("browserstack.local", browserstackLocal);
 		capabilities.setCapability("browserstack.localIdentifier", browserstackLocalIdentifier);
 		try {
