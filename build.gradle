@@ -98,8 +98,6 @@ test {
 	include '**/*Courgette.class'
 
     outputs.upToDateWhen { false }
-    
-    
 }
 
 findbugsMain {
