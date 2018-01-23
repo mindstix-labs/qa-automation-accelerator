@@ -3,18 +3,18 @@ hub:
   ports:
     - "4444:4444"
   extra_hosts:
+    &extra-dns-records
     staging.mydomain.com: 127.0.0.1
+    test.foo.com: 127.0.0.1
     
 firefox:
   image: selenium/node-firefox
   links:
     - hub
-  extra_hosts:
-    staging.mydomain.com: 127.0.0.1
+  extra_hosts: *default-dns
 
 chrome:
   image: selenium/node-chrome
   links:
     - hub
-  extra_hosts:
-    staging.mydomain.com: 127.0.0.1
+  extra_hosts: *default-dns
