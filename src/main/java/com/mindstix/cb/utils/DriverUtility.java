@@ -52,14 +52,15 @@ public final class DriverUtility {
 		InputStream driverInput = null;
 		WebDriver webDriver = null;
 		try {
-			switch (System.getProperty("env.platform")) {
-			case "local":
+			String platform = System.getProperty("env.platform");
+			switch (Constants.Platform.valueOf(platform.toUpperCase())) {
+			case LOCAL:
 				webDriver = initDriver(browserName);
 				break;
-			case "browserStack":
+			case BROWSERSTACK:
 				webDriver = initBrowserStack();
 				break;
-			case "sauceLabs":
+			case SAUCELABS:
 				webDriver = initSauceLabs();
 				break;
 			default:
@@ -94,14 +95,14 @@ public final class DriverUtility {
 	 */
 	private static WebDriver initDriver(String browserType) {
 		WebDriver webDriver;
-		switch (browserType) {
-		case "chrome":
+		switch (Constants.Browser.valueOf(browserType.toUpperCase())) {
+		case CHROME:
 			webDriver = initChromeDriver();
 			break;
-		case "firefox":
+		case FIREFOX:
 			webDriver = initFirefoxDriver();
 			break;
-		case "IE":
+		case IE:
 			webDriver = initIEDriver();
 			break;
 		default:
@@ -122,19 +123,19 @@ public final class DriverUtility {
 		ChromeOptions options = null;
 		WebDriver webDriver = null;
 		if (mode != null) {
-			switch (mode) {
-			case "normal":
+			switch (Constants.Mode.valueOf(mode.toUpperCase())) {
+			case NORMAL:
 				DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome();
 				handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				webDriver = new ChromeDriver(handlSSLErr);
 				break;
-			case "headless":
+			case HEADLESS:
 				options = new ChromeOptions();
 				options.addArguments("--headless");
 				options.addArguments("--start-maximized");
 				webDriver = new ChromeDriver(options);
 				break;
-			case "grid":
+			case GRID:
 				String hubIPAddress = System.getProperty("env.hubIP");
 				DesiredCapabilities dc = DesiredCapabilities.chrome();
 				try {
@@ -143,7 +144,7 @@ public final class DriverUtility {
 					throw new RuntimeException(e.getMessage());
 				}
 				break;
-			case "incognito":
+			case ICOGNITO:
 				options = new ChromeOptions();
 				options.addArguments("--incognito");
 				webDriver = new ChromeDriver(options);
