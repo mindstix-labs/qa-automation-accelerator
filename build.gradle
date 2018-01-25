@@ -2,18 +2,11 @@
  * Copyright (c) 2017 Mindstix Inc.
  */
 
-plugins {
-	id "org.sonarqube" version "2.5"
-	id "jacoco"
-	id "java"
-}
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'findbugs'
 apply plugin: 'java'
-apply plugin: "jacoco"
 
 sourceCompatibility = 1.8
 
@@ -42,14 +35,6 @@ dependencies {
 	compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: webDriverManagerVersion
 	compile group: 'javax.mail', name: 'mail', version: javaMailVersion
 	compile group: 'org.freemarker', name: 'freemarker', version: freemarkerVersion
-}
-
-sonarqube {
-	properties {
-		property "sonar.projectName", "Java :: Code coverage Demo"
-		property "sonar.projectKey", "org.sonarqube:JacocoCodeCoverage"
-		property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
-	}
 }
 
 test {
@@ -105,16 +90,4 @@ findbugsMain {
     xml.enabled = false
     html.enabled = true
   }
-}
-
-jacoco {
-    toolVersion = "0.7.9"
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-        csv.enabled = false
-    }
 }
