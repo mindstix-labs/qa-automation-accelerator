@@ -42,16 +42,31 @@ public final class DriverUtility {
 	}
 
 	/**
-	 * Method to load properties according to mentioned Browser Name and
-	 * Initialize Web Driver
+	 * Method to load properties according to mentioned Browser Name and Initialize
+	 * Web Driver
 	 * 
 	 * @param browserName
 	 *            -Name of Browser Mentioned in testng.xml
 	 */
 	public static WebDriver loadDriver(String browserName) {
 		InputStream driverInput = null;
+		WebDriver webDriver = null;
 		try {
-			WebDriver webDriver = initDriver(browserName);
+			String platform = System.getProperty("env.platform");
+			switch (Constants.Platform.valueOf(platform.toUpperCase())) {
+			case LOCAL:
+				webDriver = initDriver(browserName);
+				break;
+			case BROWSERSTACK:
+				webDriver = initBrowserStack();
+				break;
+			case SAUCELABS:
+				webDriver = initSauceLabs();
+				break;
+			default:
+				webDriver = initDriver(browserName);
+				break;
+			}
 			webDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 			webDriver.manage().timeouts().setScriptTimeout(9000, TimeUnit.MILLISECONDS);
 			webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.MINUTES);
@@ -73,22 +88,21 @@ public final class DriverUtility {
 	}
 
 	/**
-	 * To initialize Web Driver according to value of browserName provided in
-	 * .xml
+	 * To initialize Web Driver according to value of browserName provided in .xml
 	 * 
 	 * @param browserType
 	 *            Browser Name
 	 */
 	private static WebDriver initDriver(String browserType) {
 		WebDriver webDriver;
-		switch (browserType) {
-		case "chrome":
+		switch (Constants.Browser.valueOf(browserType.toUpperCase())) {
+		case CHROME:
 			webDriver = initChromeDriver();
 			break;
-		case "firefox":
+		case FIREFOX:
 			webDriver = initFirefoxDriver();
 			break;
-		case "IE":
+		case IE:
 			webDriver = initIEDriver();
 			break;
 		default:
@@ -109,19 +123,19 @@ public final class DriverUtility {
 		ChromeOptions options = null;
 		WebDriver webDriver = null;
 		if (mode != null) {
-			switch (mode) {
-			case "normal":
+			switch (Constants.Mode.valueOf(mode.toUpperCase())) {
+			case NORMAL:
 				DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome();
 				handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				webDriver = new ChromeDriver(handlSSLErr);
 				break;
-			case "headless":
+			case HEADLESS:
 				options = new ChromeOptions();
 				options.addArguments("--headless");
 				options.addArguments("--start-maximized");
 				webDriver = new ChromeDriver(options);
 				break;
-			case "grid":
+			case GRID:
 				String hubIPAddress = System.getProperty("env.hubIP");
 				DesiredCapabilities dc = DesiredCapabilities.chrome();
 				try {
@@ -130,7 +144,7 @@ public final class DriverUtility {
 					throw new RuntimeException(e.getMessage());
 				}
 				break;
-			case "incognito":
+			case ICOGNITO:
 				options = new ChromeOptions();
 				options.addArguments("--incognito");
 				webDriver = new ChromeDriver(options);
@@ -167,4 +181,59 @@ public final class DriverUtility {
 		webDriver.manage().window().maximize();
 		return webDriver;
 	}
+
+	/**
+	 * To initialize Browser Stack Remote Web Driver
+	 * 
+	 * @return Web Driver
+	 */
+	private static WebDriver initBrowserStack() {
+		LOGGER.info("Inittializing browserstack");
+		WebDriver webDriver = null;
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		String username = System.getenv("BROWSERSTACK_USER");
+		String accessKey = System.getenv("BROWSERSTACK_ACCESSKEY");
+		String browserstackLocal = System.getenv("BROWSERSTACK_LOCAL");
+		String browserstackLocalIdentifier = System.getenv("BROWSERSTACK_LOCAL_IDENTIFIER");
+		String browser = System.getProperty("env.browser");
+		String os = System.getProperty("os.name");
+		os = os.split(" ", 2)[0];
+		capabilities.setCapability("browser", browser);
+		capabilities.setCapability("os", os);
+		capabilities.setCapability("browserstack.local", browserstackLocal);
+		capabilities.setCapability("browserstack.localIdentifier", browserstackLocalIdentifier);
+		try {
+			webDriver = new RemoteWebDriver(
+					new URL("https://" + username + ":" + accessKey + "@hub.browserstack.com/wd/hub"), capabilities);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return webDriver;
+	}
+
+	/**
+	 * To initialize SauceLabs Remote Web Driver
+	 * 
+	 * @return Web Driver
+	 */
+	private static WebDriver initSauceLabs() {
+		LOGGER.info("Inittializing saucelabs");
+		WebDriver webDriver = null;
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		String username = System.getenv("SAUCELABS_USER");
+		String accessKey = System.getenv("SAUCELABS_ACCESSKEY");
+		String browser = System.getProperty("env.browser");
+		String os = System.getProperty("os.name");
+		capabilities.setCapability("browserName", browser);
+		capabilities.setCapability("platform", os);
+		try {
+			webDriver = new RemoteWebDriver(
+					new URL("https://" + username + ":" + accessKey + "@ondemand.saucelabs.com:443/wd/hub"),
+					capabilities);
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return webDriver;
+	}
+
 }

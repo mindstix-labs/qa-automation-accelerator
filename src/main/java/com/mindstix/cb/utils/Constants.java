@@ -15,4 +15,16 @@ public final class Constants {
 	 */
 	private Constants() {
 	}
+	
+	public static enum Platform {
+		LOCAL, BROWSERSTACK, SAUCELABS
+	}
+
+	public static enum Browser {
+		CHROME, FIREFOX, IE
+	}
+
+	public static enum Mode {
+		NORMAL, HEADLESS, GRID, ICOGNITO
+	}
 }

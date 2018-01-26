@@ -67,6 +67,10 @@ test {
 	if (cucumberOptions == null || cucumberOptions == '') {
 		cucumberOptions = '--tags @cbt'
 	}
+	def platform = System.getProperty("env.platform");
+	if(platform == null || cucumberOptions == ''){
+		platform = 'local'
+	}
 	systemProperties 'env.browser': browser
 	systemProperties 'env.driverPath': driverPath
 	systemProperties 'env.mode': mode
@@ -78,7 +82,7 @@ test {
 	systemProperties 'env.baseURL': 'http://'+ urlPrefixCustom + customDomain
 	systemProperties 'cucumber.options': cucumberOptions
 	systemProperties 'file.encoding': 'utf-8'
-
+	systemProperties 'env.platform': platform
 	include '**/*Courgette.class'
 
     outputs.upToDateWhen { false }
