@@ -1,6 +1,7 @@
 pipeline {
 	agent any
 	parameters {
+		choice(name: 'PLATFORM', choices: 'Local\nSauceLabs\nBrowserStack', description: 'Select Platform')
 		choice(name: 'BROWSER', choices: 'chrome\nfirefox\nIE', description: 'Select Browser')
 		choice(name: 'MODE', choices: 'grid\nnormal', description: 'Select browser mode')
 		string(name: 'DRIVER', defaultValue: 'drivers/linux/chromedriver_2_33', description: 'Enter Driver Path')
@@ -27,18 +28,18 @@ pipeline {
         	}
 			stage('Test environment availability') {
             		steps {
-                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.options=\"--tags @sitecheck\""
+                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @sitecheck\""
         	    	}
         	}
         	stage('Test bed setup') {
             		steps {
-                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.options=\"--tags @usercheck\""
+                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @usercheck\""
         	    	}
         	}
     		stage('Test') {
             		steps {
             		    sh "mvn clean"
-            			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.options=\"${params.TAGS}\""
+            			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER}  -Denv.platform=${params.PLATFORM} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.options=\"${params.TAGS}\""
         	    	}
         	}
 	}
