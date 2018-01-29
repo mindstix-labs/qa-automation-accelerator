@@ -10,8 +10,4 @@ Scenario Outline:
 	Examples: 
 		| to |
 		| manoj.sathe@mindstix.com |
-		
-@printTime @report 		
-Scenario:
-	Given Total time taken
 	

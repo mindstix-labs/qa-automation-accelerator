@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,16 +107,5 @@ public final class GlobalContext {
 		} catch (IOException e) {
 			LOGGER.error("Operation failed while fetching report", e);
 		}
-	}
-	
-	public static String convertMillisecondsToHours(long time) {
-		DateFormat df = new SimpleDateFormat("HH 'hours' mm 'mins' ss 'seconds'");
-		return df.format(new Date(time));
-	}
-	
-	public static void printTime() {
-		String timeTaken = System.getProperty("env.timeTaken");
-		long time = Long.parseLong(timeTaken);
-		LOGGER.info("Total time taken for execution is {} ", convertMillisecondsToHours(time));
 	}
 }

@@ -83,7 +83,6 @@ test {
 	systemProperties 'cucumber.options': cucumberOptions
 	systemProperties 'file.encoding': 'utf-8'
 	systemProperties 'env.platform': platform
-	systemProperties 'env.timeTaken': timeTaken
 	include '**/*Courgette.class'
 
     outputs.upToDateWhen { false }
