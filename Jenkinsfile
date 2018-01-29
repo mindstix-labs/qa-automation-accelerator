@@ -1,3 +1,4 @@
+import hudson.Util;
 pipeline {
 	agent any
 	parameters {
