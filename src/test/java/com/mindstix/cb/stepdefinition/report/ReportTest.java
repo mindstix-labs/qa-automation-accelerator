@@ -58,6 +58,10 @@ public class ReportTest {
 		GlobalContext.emailReportTo(to);
 	}
 
+	@Given("^Total time taken$")
+	public void print_total_time() {
+		GlobalContext.printTime();
+	}
 	/**
 	 * Method which will Execute after Report scenario
 	 * 
