@@ -12,7 +12,7 @@ import cucumber.api.CucumberOptions;
 
 @RunWith(Courgette.class)
 @CourgetteOptions(
-	    runLevel = CourgetteRunLevel.FEATURE,
+	    runLevel = CourgetteRunLevel.SCENARIO,
 	    showTestOutput = true,
 	    rerunFailedScenarios = false,
 	    threads = 2,
