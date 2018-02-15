@@ -38,6 +38,8 @@ dependencies {
 }
 
 test {
+	systemProperties = System.getProperties()
+	
 	def urlPrefixDefault = 'www'
 	def urlPrefixCustom = System.getProperty('env.urlPrefix');
 	if (urlPrefixCustom == null || urlPrefixCustom == '') {
@@ -62,12 +64,9 @@ test {
 	}
 	def hubIpAddress = System.getProperty("env.hubIP");
 	if (hubIpAddress == null || hubIpAddress == '') {
-		hubIpAddress = '172.17.0.2:4444'
+		hubIpAddress = '192.168.99.100:4444'
 	}
-	def cucumberOptions = System.getProperty("cucumber.options");
-	if (cucumberOptions == null || cucumberOptions == '') {
-		cucumberOptions = '--tags @cbt'
-	}
+	
 	systemProperties 'env.browser': browser
 	systemProperties 'env.driverPath': driverPath
 	systemProperties 'env.mode': mode
@@ -77,7 +76,6 @@ test {
 	//systemProperties 'env.browser': System.getProperty('env.browser')
 	//systemProperties 'env.driverPath': System.getProperty("env.driverPath")
 	systemProperties 'env.baseURL': 'http://'+ urlPrefixCustom + customDomain
-	systemProperties 'cucumber.options': cucumberOptions
 	systemProperties 'file.encoding': 'utf-8'
 
 	include '**/*Courgette.class'
@@ -87,7 +85,7 @@ test {
 
 findbugsMain {
   reports {
-    xml.enabled = false
-    html.enabled = true
+    xml.enabled = true
+    html.enabled = false
   }
 }
