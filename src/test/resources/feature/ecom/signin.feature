@@ -1,6 +1,6 @@
 Feature: Feature to test sign in scenarios
 
-#@web @cbt @ecom @signin @web-001 @smoke
+@web @cbt @ecom @signin @web-001 @smoke
 Scenario Outline:
 	Given User is browsing 'Automation Practice' website
 	When User clicks "Sign In" on "Homepage" 
@@ -11,4 +11,4 @@ Scenario Outline:
 		| email 		| password 		|
 		| test1@mx.com 	| mypassword 	|
 		# This is intended to fail as there is no such user
-		#| test2@mx.com 	| invalidpassword 	|
+		| test2@mx.com 	| invalidpassword 	|
