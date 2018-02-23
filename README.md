@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mindstix-labs/selenium-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/selenium-accelerator)
+[![Build Status](https://travis-ci.org/mindstix-labs/qa-automation-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/qa-automation-accelerator)
 
 # Index
 1. [Introduction](#qa-automation-accelerator)
@@ -16,7 +16,11 @@
 13. [License](#license)
 
 # qa-automation-accelerator
-> Opinionated baseline to bootstrap selenium and cucumber based web application test automation projects
+> A **_cloud-scale_**, **_opinionated_**, test automation framework for **_Web_**, **_APIs_**, and **_Micro Services_**. Strongly aligned with the **_DevOps-way_** of doing things
+
+> Aim is to provide out-of-box **_patterns_** and reference implementation to **_accelerate_** test automation and to drive best practices
+
+> *Disclaimer:* This is work in progress at this stage.
 
 # Features
 1. Selenium + Cucumber based automation test examples for automationpractice.com

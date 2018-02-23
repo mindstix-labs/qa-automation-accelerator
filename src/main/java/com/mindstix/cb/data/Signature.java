@@ -13,11 +13,11 @@ import java.util.List;
 public class Signature {
 
 	private List<SignatureCoordinates> signatures;
-	
-	public List<SignatureCoordinates> getSignatures(){
+
+	public List<SignatureCoordinates> getSignatures() {
 		return signatures;
 	}
-	
+
 	public void setSignatures(List<SignatureCoordinates> signatures) {
 		this.signatures = signatures;
 	}

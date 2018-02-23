@@ -3,8 +3,9 @@ hub:
   ports:
     - "4444:4444"
   extra_hosts:
-    &hostEntries
+    &extra-dns-records
     staging.mydomain.com: 127.0.0.1
+    test.foo.com: 127.0.0.1
     
 firefox:
   image: selenium/node-firefox
@@ -14,7 +15,7 @@ firefox:
       - /dev/shm:/dev/shm
   environment:
       HUB_HOST: hub
-  extra_hosts: *hostEntries
+  extra_hosts: *extra-dns-records
 
 chrome:
   image: selenium/node-chrome
@@ -24,4 +25,4 @@ chrome:
       - /dev/shm:/dev/shm
   environment:
       HUB_HOST: hub
-  extra_hosts: *hostEntries
+  extra_hosts: *extra-dns-records

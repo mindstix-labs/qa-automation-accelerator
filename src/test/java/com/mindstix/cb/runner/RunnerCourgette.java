@@ -12,13 +12,13 @@ import cucumber.api.CucumberOptions;
 
 @RunWith(Courgette.class)
 @CourgetteOptions(
-	    runLevel = CourgetteRunLevel.SCENARIO,
+	    runLevel = CourgetteRunLevel.FEATURE,
 	    showTestOutput = true,
 	    rerunFailedScenarios = false,
 	    threads = 2,
 	    cucumberOptions = @CucumberOptions(
 	    		  features = {"src/test/resources/feature/ecom",
-											      "src/test/resources/feature/setup",
+								"src/test/resources/feature/setup",
 			                      "src/test/resources/feature/api"},
 	    		  tags = "@cbt",
 	    		  dryRun = false,

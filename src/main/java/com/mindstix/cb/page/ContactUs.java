@@ -16,5 +16,4 @@ public class ContactUs extends BasePage {
 	public ContactUs(WebDriver webDriver) {
 		super(webDriver);
 	}
-
 }

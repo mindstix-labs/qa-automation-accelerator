@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * Represents Log In Page
- * <li>automationpractice.com/index.php?controller=authentication&back=my-account</li>
+ * Represents Log In Page <li>
+ * automationpractice.com/index.php?controller=authentication&back=my-account</li>
  * 
  * @author Mindstix
  */
@@ -84,5 +84,4 @@ public class LogIn extends BasePage {
 		scrollAndClick(registerButton);
 		return new MyAccount(webDriver);
 	}
-
 }
