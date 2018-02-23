@@ -16,7 +16,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
@@ -112,8 +111,6 @@ public final class DriverUtility {
 		if (mode != null) {
 			switch (mode) {
 			case "normal":
-				DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome();
-				handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				webDriver = new ChromeDriver();
 				break;
 			case "headless":
@@ -161,8 +158,6 @@ public final class DriverUtility {
 		if (mode != null) {
 			switch (mode) {
 			case "normal":
-				DesiredCapabilities handlSSLErr = DesiredCapabilities.firefox();
-				handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				webDriver = new FirefoxDriver();
 				break;
 			case "headless":
