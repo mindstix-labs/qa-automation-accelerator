@@ -11,10 +11,18 @@ firefox:
   image: selenium/node-firefox
   links:
     - hub
-  extra_hosts: *default-dns
+  volumes:
+      - /dev/shm:/dev/shm
+  environment:
+      HUB_HOST: hub
+  extra_hosts: *extra-dns-records
 
 chrome:
   image: selenium/node-chrome
   links:
     - hub
-  extra_hosts: *default-dns
+  volumes:
+      - /dev/shm:/dev/shm
+  environment:
+      HUB_HOST: hub
+  extra_hosts: *extra-dns-records
