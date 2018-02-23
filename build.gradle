@@ -64,7 +64,7 @@ test {
 	}
 	def hubIpAddress = System.getProperty("env.hubIP");
 	if (hubIpAddress == null || hubIpAddress == '') {
-		hubIpAddress = '192.168.99.100:4444'
+		hubIpAddress = '172.17.0.2:4444'
 	}
 	
 	systemProperties 'env.browser': browser

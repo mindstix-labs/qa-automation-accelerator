@@ -161,7 +161,7 @@ public final class DriverUtility {
 		if (mode != null) {
 			switch (mode) {
 			case "normal":
-				DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome();
+				DesiredCapabilities handlSSLErr = DesiredCapabilities.firefox();
 				handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 				webDriver = new FirefoxDriver();
 				break;
