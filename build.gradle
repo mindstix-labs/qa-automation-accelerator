@@ -79,13 +79,13 @@ test {
 	systemProperties 'file.encoding': 'utf-8'
 
 	include '**/*Courgette.class'
-
+	
     outputs.upToDateWhen { false }
 }
 
 findbugsMain {
   reports {
-    xml.enabled = true
-    html.enabled = false
+    xml.enabled = false
+    html.enabled = true
   }
 }

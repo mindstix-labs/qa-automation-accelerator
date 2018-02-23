@@ -3,18 +3,25 @@ hub:
   ports:
     - "4444:4444"
   extra_hosts:
+    &hostEntries
     staging.mydomain.com: 127.0.0.1
     
 firefox:
   image: selenium/node-firefox
   links:
     - hub
-  extra_hosts:
-    staging.mydomain.com: 127.0.0.1
+  volumes:
+      - /dev/shm:/dev/shm
+  environment:
+      HUB_HOST: hub
+  extra_hosts: *hostEntries
 
 chrome:
   image: selenium/node-chrome
   links:
     - hub
-  extra_hosts:
-    staging.mydomain.com: 127.0.0.1
+  volumes:
+      - /dev/shm:/dev/shm
+  environment:
+      HUB_HOST: hub
+  extra_hosts: *hostEntries
