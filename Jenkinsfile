@@ -29,30 +29,18 @@ pipeline {
         	}
 			stage('Test environment availability') {
             		steps {
-<<<<<<< HEAD
-                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @sitecheck\""
-=======
                 		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.tags=\"@sitecheck\""
->>>>>>> refs/remotes/origin/master
         	    	}
         	}
         	stage('Test bed setup') {
             		steps {
-<<<<<<< HEAD
-                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @usercheck\""
-=======
                 		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.tags=\"@usercheck\""
->>>>>>> refs/remotes/origin/master
         	    	}
         	}
     		stage('Test') {
             		steps {
             		    sh "mvn clean"
-<<<<<<< HEAD
-            			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER}  -Denv.platform=${params.PLATFORM} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.options=\"${params.TAGS}\""
-=======
             			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.tags=\"${params.TAGS}\""
->>>>>>> refs/remotes/origin/master
         	    	}
         	}
 	}

@@ -80,7 +80,9 @@ public final class DriverUtility {
 	}
 
 	public static void quitWebDriver(WebDriver webDriver) {
-		webDriver.quit();
+		if(webDriver !=null){
+			webDriver.quit();
+		}
 	}
 
 	public void closeWebDriver(WebDriver webDriver) {

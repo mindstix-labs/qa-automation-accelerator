@@ -35,6 +35,7 @@ dependencies {
 	compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: webDriverManagerVersion
 	compile group: 'javax.mail', name: 'mail', version: javaMailVersion
 	compile group: 'org.freemarker', name: 'freemarker', version: freemarkerVersion
+	compile group: 'redis.clients', name: 'jedis', version: jedisVersion
 }
 
 test {
@@ -71,6 +72,11 @@ test {
 	if(platform == null || cucumberOptions == ''){
 		platform = 'local'
 	}
+	
+	def redisHost = System.getProperty("env.redisHost");
+	if(redisHost == null){
+		redisHost = 'localhost'
+	}
 
 	systemProperties 'env.browser': browser
 	systemProperties 'env.driverPath': driverPath
@@ -83,6 +89,7 @@ test {
 	systemProperties 'env.baseURL': 'http://'+ urlPrefixCustom + customDomain
 	systemProperties 'file.encoding': 'utf-8'
 	systemProperties 'env.platform': platform
+	systemProperties 'env.redisHost' : redisHost
 	include '**/*Courgette.class'
 	
     outputs.upToDateWhen { false }

@@ -5,6 +5,9 @@ package com.mindstix.cb.stepdefinition.ecom;
 
 import org.junit.Assert;
 
+import com.mindstix.cb.utils.Constants;
+import com.mindstix.cb.utils.RedisUtility;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -24,6 +27,13 @@ public class SignInTest {
 		context.logIn.enterUserData(emailAddress, password);
 		context.myAccount = context.logIn.clickOnSignInButton();
 	}
+	
+	@When("^inputs email address and password from redis set$")
+	public void inputs_email_address_and_password() {
+		context.userName = RedisUtility.acquireUser(Constants.USERS_KEY);
+		context.logIn.enterUserDataUsingRedis(context.userName);
+		context.myAccount = context.logIn.clickOnSignInButton();
+	}
 
 	@Then("^User either signs in or registers with email address \"([^\"]*)\" and password \"([^\"]*)\"$")
 	public void user_either_signs_in_or_registers_with(String emailAddress, String password) {
@@ -36,5 +46,6 @@ public class SignInTest {
 		} else {
 			Assert.assertTrue(true);
 		}
+		context.userName = emailAddress;
 	}
 }
