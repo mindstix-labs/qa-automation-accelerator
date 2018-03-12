@@ -8,7 +8,7 @@ pipeline {
 		string(name: 'DRIVER', defaultValue: 'drivers/linux/chromedriver_2_33', description: 'Enter Driver Path')
         choice(name: 'TARGET', choices: 'www\nstaging\nstaging2', description: 'Select Environment')
         choice(name: 'SELENIUM_GRID_NODE', choices: '5\n1\n2\n3\n4\n6\n7\n8\n9\n10', description: 'Select number of Nodes want to register')
-        string(name: 'TAGS', defaultValue: '--tags @cbt', description: 'Enter tags here')
+        string(name: 'TAGS', defaultValue: '@cbt', description: 'Enter tags here')
     }
     options {
 		buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -29,18 +29,30 @@ pipeline {
         	}
 			stage('Test environment availability') {
             		steps {
+<<<<<<< HEAD
                 		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @sitecheck\""
+=======
+                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.tags=\"@sitecheck\""
+>>>>>>> refs/remotes/origin/master
         	    	}
         	}
         	stage('Test bed setup') {
             		steps {
+<<<<<<< HEAD
                 		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @usercheck\""
+=======
+                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.tags=\"@usercheck\""
+>>>>>>> refs/remotes/origin/master
         	    	}
         	}
     		stage('Test') {
             		steps {
             		    sh "mvn clean"
+<<<<<<< HEAD
             			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER}  -Denv.platform=${params.PLATFORM} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.options=\"${params.TAGS}\""
+=======
+            			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.tags=\"${params.TAGS}\""
+>>>>>>> refs/remotes/origin/master
         	    	}
         	}
 	}

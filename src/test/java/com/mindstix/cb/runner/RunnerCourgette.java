@@ -11,10 +11,25 @@ import courgette.api.junit.Courgette;
 import cucumber.api.CucumberOptions;
 
 @RunWith(Courgette.class)
-@CourgetteOptions(runLevel = CourgetteRunLevel.FEATURE, showTestOutput = true, rerunFailedScenarios = false, threads = 2, cucumberOptions = @CucumberOptions(features = {
-		"src/test/resources/feature/ecom", "src/test/resources/feature/setup", "src/test/resources/feature/api", "src/test/resources/feature/report" }, tags = "@cbt", dryRun = false, strict = true, monochrome = true, glue = {
-		"com.mindstix.cb.stepdefinition.ecom", "com.mindstix.cb.stepdefinition.api", "com.mindstix.cb.stepdefinition.report" }, plugin = { "pretty", "html:build/reports/cucumberreport/index",
-		"json:build/reports/cucumberreport/cucumber.json" }))
+@CourgetteOptions(
+	    runLevel = CourgetteRunLevel.FEATURE,
+	    showTestOutput = true,
+	    rerunFailedScenarios = false,
+	    threads = 2,
+	    cucumberOptions = @CucumberOptions(
+	    		  features = {"src/test/resources/feature/ecom",
+								"src/test/resources/feature/setup",
+			                      "src/test/resources/feature/api"},
+	    		  tags = "@cbt",
+	    		  dryRun = false,
+	    		  strict = true,
+	    		  monochrome=true,
+	    		  glue = {"com.mindstix.cb.stepdefinition.ecom",
+			              "com.mindstix.cb.stepdefinition.api"},
+	    		  plugin = {"pretty", "html:build/reports/cucumberreport/index", 
+	    		                  "json:build/reports/cucumberreport/cucumber.json" }
+	    		))
+
 /**
  * This runner is used from gradle build and avoids creating runner classes manually
  * to achieve parallel execution.
