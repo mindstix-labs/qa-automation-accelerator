@@ -31,7 +31,7 @@ public class SignInTest {
 	@When("^inputs email address and password from redis set$")
 	public void inputs_email_address_and_password() {
 		context.userName = RedisUtility.acquireUser(Constants.USERS_KEY);
-		context.logIn.enterUserDataUsingRedis(context.userName);
+		context.logIn.enterUserData(context.userName);
 		context.myAccount = context.logIn.clickOnSignInButton();
 	}
 

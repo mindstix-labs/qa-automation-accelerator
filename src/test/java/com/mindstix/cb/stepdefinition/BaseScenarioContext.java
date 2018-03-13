@@ -35,10 +35,9 @@ public abstract class BaseScenarioContext {
 	private StopWatch stopWatch;
 
 	private String testResult;
-
-	public List<String> allProductID;
-
 	public String userName;
+	
+	public List<String> allProductID;
 
 	/**
 	 * Returns webDriver

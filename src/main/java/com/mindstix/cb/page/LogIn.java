@@ -43,7 +43,7 @@ public class LogIn extends BasePage {
 		sendKeysToElement(password, passwordValue);
 	}
 	
-	public void enterUserDataUsingRedis(String user){
+	public void enterUserData(String user){
 		emailAddress = getElementByCSS("emailAddressCSS");
 		password = getElementByCSS("passwordCSS");
 		sendKeysToElement(emailAddress, user);
