@@ -14,8 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
@@ -80,7 +80,9 @@ public final class DriverUtility {
 	}
 
 	public static void quitWebDriver(WebDriver webDriver) {
-		webDriver.quit();
+		if(webDriver !=null){
+			webDriver.quit();
+		}
 	}
 
 	public void closeWebDriver(WebDriver webDriver) {
@@ -125,9 +127,7 @@ public final class DriverUtility {
 		if (mode != null) {
 			switch (Constants.Mode.valueOf(mode.toUpperCase())) {
 			case NORMAL:
-				DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome();
-				handlSSLErr.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-				webDriver = new ChromeDriver(handlSSLErr);
+				webDriver = new ChromeDriver();
 				break;
 			case HEADLESS:
 				options = new ChromeOptions();
@@ -154,6 +154,9 @@ public final class DriverUtility {
 				webDriver = new ChromeDriver();
 				break;
 			}
+		}else {
+			LOGGER.warn("No Mode selected for browser");
+			webDriver = new ChromeDriver();
 		}
 		return webDriver;
 	}
@@ -165,8 +168,43 @@ public final class DriverUtility {
 	 */
 	private static WebDriver initFirefoxDriver() {
 		FirefoxDriverManager.getInstance().version("0.18").setup();
-		WebDriver webDriver = new FirefoxDriver();
-		webDriver.manage().window().maximize();
+		String mode = System.getProperty("env.mode");
+		FirefoxOptions options = null;
+		WebDriver webDriver = null;
+		if (mode != null) {
+			switch (mode) {
+			case "normal":
+				webDriver = new FirefoxDriver();
+				break;
+			case "headless":
+				options = new FirefoxOptions();
+				options.addArguments("--headless");
+				options.addArguments("--start-maximized");
+				webDriver = new FirefoxDriver(options);
+				break;
+			case "grid":
+				String hubIPAddress = System.getProperty("env.hubIP");
+				DesiredCapabilities dc = DesiredCapabilities.firefox();
+				try {
+					webDriver = new RemoteWebDriver(new URL("http://" + hubIPAddress + "/wd/hub"), dc);
+				} catch (MalformedURLException e) {
+					throw new RuntimeException(e.getMessage());
+				}
+				break;
+			case "incognito":
+				options = new FirefoxOptions();
+				options.addArguments("-private");
+				webDriver = new FirefoxDriver(options);
+				webDriver.manage().window().maximize();
+				break;
+			default:
+				webDriver = new FirefoxDriver();
+				break;
+			}
+		}else {
+			LOGGER.warn("No Mode selected for browser");
+			webDriver = new FirefoxDriver();
+		}
 		return webDriver;
 	}
 
