@@ -13,7 +13,7 @@ Scenario Outline:
 		# This is intended to fail as there is no such user
 		| test2@mx.com 	| invalidpassword 	|
 		
-@web @cbt @ecom @signin @web-002 @smoke
+@web @cbt @ecom @signin @web-002 @smoke @signingusingredis
 Scenario:
 	Given User is browsing 'Automation Practice' website
 	When User clicks "Sign In" on "Homepage" 
@@ -25,7 +25,7 @@ Scenario:
 	And Verifies that the results contain the word "Dress"
 	
 		
-@web @cbt @ecom @signin @web-003 @smoke
+@web @cbt @ecom @signin @web-003 @smoke @signingusingredis
 Scenario:
 	Given User is browsing 'Automation Practice' website
 	When User clicks "Sign In" on "Homepage" 
