@@ -1,6 +1,8 @@
+import hudson.Util;
 pipeline {
 	agent any
 	parameters {
+		choice(name: 'PLATFORM', choices: 'Local\nSauceLabs\nBrowserStack', description: 'Select Platform')
 		choice(name: 'BROWSER', choices: 'chrome\nfirefox\nIE', description: 'Select Browser')
 		choice(name: 'MODE', choices: 'grid\nnormal', description: 'Select browser mode')
 		string(name: 'DRIVER', defaultValue: 'drivers/linux/chromedriver_2_33', description: 'Enter Driver Path')
@@ -64,6 +66,7 @@ def notifyBuild(String buildStatus = 'STARTED') {
    		Jenkins Job: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': (${env.BUILD_URL})
      	Report Link for Job '${env.JOB_NAME}' : ${env.BUILD_URL}cucumber-html-reports/overview-features.html
      	Latest Report Link: ${env.JENKINS_URL}job/${env.JOB_NAME}/lastCompletedBuild/cucumber-html-reports/overview-features.html
+     	Time taken: ${Util.getTimeSpanString(System.currentTimeMillis() - currentBuild.startTimeInMillis)}
      """
    // Override default values based on build status
    if (buildStatus == 'STARTED') {

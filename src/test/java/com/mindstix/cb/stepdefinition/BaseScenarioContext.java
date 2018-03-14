@@ -17,8 +17,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
+import com.mindstix.cb.utils.Constants;
 import com.mindstix.cb.utils.DriverUtility;
 import com.mindstix.cb.utils.PropertiesUtility;
+import com.mindstix.cb.utils.RedisUtility;
 
 import cucumber.api.Scenario;
 
@@ -32,8 +34,10 @@ public abstract class BaseScenarioContext {
 	private WebDriver webDriver;
 	private StopWatch stopWatch;
 
-	public List<String> allProductID;
 	private String testResult;
+	public String userName;
+	
+	public List<String> allProductID;
 
 	/**
 	 * Returns webDriver
@@ -61,8 +65,8 @@ public abstract class BaseScenarioContext {
 	}
 
 	/**
-	 * Method which will execute after each scenario after execution of each Takes
-	 * screenshot when Scenario fails and saves it into HTML report
+	 * Method which will execute after each scenario after execution of each
+	 * Takes screenshot when Scenario fails and saves it into HTML report
 	 * 
 	 * @param scenario
 	 */
@@ -79,15 +83,15 @@ public abstract class BaseScenarioContext {
 		} else {
 			testResult = "Pass";
 		}
-		if (webDriver != null) {
-			stopWatch.stop();
-			LOGGER.info("Total time taken to Execute Test Scenario {} Milliseconds", stopWatch.getTime());
-			DriverUtility.quitWebDriver(webDriver);
-		}
+		stopWatch.stop();
+		LOGGER.info("Total time taken to Execute Test Scenario {} Milliseconds", stopWatch.getTime());
+		DriverUtility.quitWebDriver(webDriver);
 
 		if (this.allProductID.size() > 0) {
 			addDataInReport(scenario.getName());
 		}
+		
+		RedisUtility.releaseUser(Constants.USERS_KEY, userName);
 	}
 
 	private void addDataInReport(String scenario) {
