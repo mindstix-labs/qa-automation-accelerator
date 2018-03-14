@@ -13,9 +13,9 @@
 10. [How to utilize Selenium grid feature?](#how-to-utilize-selenium-grid-feature)
 11. [How to utilize Redis and Jedis feature?](#how-to-utilize-redis-and-jedis-feature)
 12. [How to utilize Elasticsearch, Logstash and Kibana feature?](#how-to-utilize-elasticsearch-logstash-and-kibana-feature)
-11. [Developer guide](#developer-guide)
-12. [Feedback](#suggest-a-feature-or-report-a-bug)
-13. [License](#license)
+13. [Developer guide](#developer-guide)
+14. [Feedback](#suggest-a-feature-or-report-a-bug)
+15. [License](#license)
 
 # qa-automation-accelerator
 > A **_cloud-scale_**, **_opinionated_**, test automation framework for **_Web_**, **_APIs_**, and **_Micro Services_**. Strongly aligned with the **_DevOps-way_** of doing things
