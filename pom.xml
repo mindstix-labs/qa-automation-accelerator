@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>io.github.prashant-ramcharan</groupId>
 			<artifactId>courgette-jvm</artifactId>
-			<version>1.4.0</version>
+			<version>1.5.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -68,16 +68,6 @@
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>1.2.4</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -129,6 +119,16 @@
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 			<version>2.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>4.9</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
 		</dependency>
 	</dependencies>
 	<build>
