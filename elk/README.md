@@ -11,7 +11,7 @@
 # Pre-requisites
 
 1. **Docker:**
-    - Install [Docker](https://docker.com/), either using a native package (Linux) or wrapped in a virtual machine (Windows, OS X – e.g. using [Boot2Docker](http://boot2docker.io/) or [Vagrant](https://www.vagrantup.com/)).
+    - Install [Docker](https://docker.com/), either using a native package (Linux) or wrapped in a virtual machine (Windows, OS X ï¿½ e.g. using [Boot2Docker](http://boot2docker.io/) or [Vagrant](https://www.vagrantup.com/)).
 
 
 2. **A minimum of 4GB RAM assigned to Docker**
@@ -73,7 +73,7 @@ Command:
 
 # How to delete the index in Elasticsearch?
 
-1. Linux:  ``curl -XDELETE "http://localhost:9200/"rh-acu-debug""``
+1. Linux:  ``curl -XDELETE "http://localhost:9200/"indexname""``
 2. Windows (In docker quickstart terminal): ``curl -XDELETE "http://192.168.99.100:9200/"indexName""``
 
 # How to send logs to Elasticsearch?
