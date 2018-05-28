@@ -137,7 +137,7 @@ And you can drill down into tag specific reports:
 6. For information about Redis please refer ```selenium-accelerator/src/main/java/com/mindstix/cb/utils/RedisUtility.java```
 
 # How to utilize Elasticsearch, Logstash and Kibana feature?
-1. Please refer ```elk\README.md``` for more information. 
+1. Please refer [elk\README.md](elk\README.md) for more information. 
 
 # Developer Guide
 > Refer Wiki [here](https://github.com/mindstix-labs/qa-automation-accelerator/wiki/Developer-Guide)
