@@ -6,6 +6,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'findbugs'
+apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
@@ -25,8 +26,6 @@ dependencies {
 	compile 'org.seleniumhq.selenium:selenium-java:'+seleniumVersion
 	compile 'info.cukes:cucumber-java:'+cucumberVersion
 	compile 'info.cukes:cucumber-junit:'+cucumberVersion
-	compile 'org.slf4j:slf4j-api:'+slf4jVersion
-	compile 'org.slf4j:slf4j-log4j12:'+slf4jVersion
 	testCompile 'io.rest-assured:rest-assured:'+restAssuredVersion
 	testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: cucumberPicoVersion
 	compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonDataformatVersion
@@ -34,9 +33,14 @@ dependencies {
 	compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: webDriverManagerVersion
 	compile group: 'javax.mail', name: 'mail', version: javaMailVersion
 	compile group: 'org.freemarker', name: 'freemarker', version: freemarkerVersion
+	compile group: 'redis.clients', name: 'jedis', version: jedisVersion
+	compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: logbackLogstashEncoder
+	compile group: 'ch.qos.logback', name: 'logback-classic', version: logbackClassicVersion
 }
 
 test {
+	systemProperties = System.getProperties()
+	
 	def urlPrefixDefault = 'www'
 	def urlPrefixCustom = System.getProperty('env.urlPrefix');
 	if (urlPrefixCustom == null || urlPrefixCustom == '') {
@@ -63,14 +67,17 @@ test {
 	if (hubIpAddress == null || hubIpAddress == '') {
 		hubIpAddress = '172.17.0.2:4444'
 	}
-	def cucumberOptions = System.getProperty("cucumber.options");
-	if (cucumberOptions == null || cucumberOptions == '') {
-		cucumberOptions = '--tags @cbt'
-	}
+
 	def platform = System.getProperty("env.platform");
 	if(platform == null || cucumberOptions == ''){
 		platform = 'local'
 	}
+	
+	def redisHost = System.getProperty("env.redisHost");
+	if(redisHost == null){
+		redisHost = 'localhost'
+	}
+
 	systemProperties 'env.browser': browser
 	systemProperties 'env.driverPath': driverPath
 	systemProperties 'env.mode': mode
@@ -80,11 +87,11 @@ test {
 	//systemProperties 'env.browser': System.getProperty('env.browser')
 	//systemProperties 'env.driverPath': System.getProperty("env.driverPath")
 	systemProperties 'env.baseURL': 'http://'+ urlPrefixCustom + customDomain
-	systemProperties 'cucumber.options': cucumberOptions
 	systemProperties 'file.encoding': 'utf-8'
 	systemProperties 'env.platform': platform
+	systemProperties 'env.redisHost' : redisHost
 	include '**/*Courgette.class'
-
+	
     outputs.upToDateWhen { false }
 }
 

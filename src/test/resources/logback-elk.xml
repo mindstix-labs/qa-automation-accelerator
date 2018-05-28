@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- Stop output INFO at start -->
+	<statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+	<!-- Consoe Appender -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p [%t] --- %c{1}:%L - %m %n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- logstash-appender -->
+	<appender name="LOGSTASH-APPENDER"
+		class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>http://localhost:5000</destination> <!-- Logstash IP -->
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<mdc /> 	<!-- MDC variables on the Thread will be written as JSON fields -->
+				<context /> <!--Outputs entries from logback's context -->
+				<version /> <!-- Logstash json format version, the @version field in the output -->
+				<logLevel />
+				<loggerName />
+				<threadName />
+				<message />
+				<logstashMarkers />
+				<arguments />
+				<stackTrace />
+			</providers>
+		</encoder>
+	</appender>
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="LOGSTASH-APPENDER" />
+	</root>
+</configuration>

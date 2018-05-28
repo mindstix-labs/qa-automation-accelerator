@@ -1,3 +1,4 @@
+import hudson.Util;
 pipeline {
 	agent any
 	parameters {
@@ -7,7 +8,7 @@ pipeline {
 		string(name: 'DRIVER', defaultValue: 'drivers/linux/chromedriver_2_33', description: 'Enter Driver Path')
         choice(name: 'TARGET', choices: 'www\nstaging\nstaging2', description: 'Select Environment')
         choice(name: 'SELENIUM_GRID_NODE', choices: '5\n1\n2\n3\n4\n6\n7\n8\n9\n10', description: 'Select number of Nodes want to register')
-        string(name: 'TAGS', defaultValue: '--tags @cbt', description: 'Enter tags here')
+        string(name: 'TAGS', defaultValue: '@cbt', description: 'Enter tags here')
     }
     options {
 		buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -28,18 +29,18 @@ pipeline {
         	}
 			stage('Test environment availability') {
             		steps {
-                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @sitecheck\""
+                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.tags=\"@sitecheck\""
         	    	}
         	}
         	stage('Test bed setup') {
             		steps {
-                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.platform=${params.PLATFORM} -Denv.threadCount=1 -Dcucumber.options=\"--tags @usercheck\""
+                		sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=1 -Dcucumber.tags=\"@usercheck\""
         	    	}
         	}
     		stage('Test') {
             		steps {
             		    sh "mvn clean"
-            			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER}  -Denv.platform=${params.PLATFORM} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.options=\"${params.TAGS}\""
+            			sh "./gradlew clean test -Denv.mode=${params.MODE} -Denv.urlPrefix=${params.TARGET} -Denv.browser=${params.BROWSER} -Denv.threadCount=${params.SELENIUM_GRID_NODE} -Dcucumber.tags=\"${params.TAGS}\""
         	    	}
         	}
 	}
@@ -65,6 +66,7 @@ def notifyBuild(String buildStatus = 'STARTED') {
    		Jenkins Job: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': (${env.BUILD_URL})
      	Report Link for Job '${env.JOB_NAME}' : ${env.BUILD_URL}cucumber-html-reports/overview-features.html
      	Latest Report Link: ${env.JENKINS_URL}job/${env.JOB_NAME}/lastCompletedBuild/cucumber-html-reports/overview-features.html
+     	Time taken: ${Util.getTimeSpanString(System.currentTimeMillis() - currentBuild.startTimeInMillis)}
      """
    // Override default values based on build status
    if (buildStatus == 'STARTED') {

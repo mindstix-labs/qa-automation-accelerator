@@ -42,6 +42,13 @@ public class LogIn extends BasePage {
 		sendKeysToElement(emailAddress, emailAddressValue);
 		sendKeysToElement(password, passwordValue);
 	}
+	
+	public void enterUserData(String user){
+		emailAddress = getElementByCSS("emailAddressCSS");
+		password = getElementByCSS("passwordCSS");
+		sendKeysToElement(emailAddress, user);
+		sendKeysToElement(password, getTestData("password"));
+	}
 
 	public MyAccount clickOnSignInButton() {
 		signInButton = getElementByCSS("signInButtonCSS");

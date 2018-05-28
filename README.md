@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/mindstix-labs/qa-automation-accelerator.svg?branch=master)](https://travis-ci.org/mindstix-labs/qa-automation-accelerator)
 
 # Index
-1. [Introduction](#selenium-accelerator)
+1. [Introduction](#qa-automation-accelerator)
 2. [Features](#features)
 3. [Pre-requisites](#pre-requisites)
 4. [Dependencies](#dependencies)
@@ -11,9 +11,11 @@
 8. [Report Samples](#report-samples) 
 9. [How to utilize Jenkins pipeline feature?](#how-to-utilize-jenkins-pipeline-feature)
 10. [How to utilize Selenium grid feature?](#how-to-utilize-selenium-grid-feature)
-11. [Developer guide](#developer-guide)
-12. [Feedback](#suggest-a-feature-or-report-a-bug)
-13. [License](#license)
+11. [How to utilize Redis and Jedis feature?](#how-to-utilize-redis-and-jedis-feature)
+12. [How to utilize Elasticsearch, Logstash and Kibana feature?](#how-to-utilize-elasticsearch-logstash-and-kibana-feature)
+13. [Developer guide](#developer-guide)
+14. [Feedback](#suggest-a-feature-or-report-a-bug)
+15. [License](#license)
 
 # qa-automation-accelerator
 > A **_cloud-scale_**, **_opinionated_**, test automation framework for **_Web_**, **_APIs_**, and **_Micro Services_**. Strongly aligned with the **_DevOps-way_** of doing things
@@ -32,11 +34,13 @@
 7. Utilities to deal with driver, finders
 8. Externalized selector configuration
 9. Almost zero setup overhead - driver setup is automated via webdrivermanager
-10. TODO support for BrowserStack, SauceLabs
+10. Support for BrowserStack, SauceLabs
 11. TODO support to trigger emails from the tests
 12. Fully functional Jenkinsfile that can be used to setup a Jenkins pipeline
 13. Sample API tests using RestAssured
-
+14. Support for Redis for coordination of user data across tests
+15. Support for ELK (Elasticsearch, Logback and Kibana)
+ 
 # Pre-requisites
 > JDK 8
 
@@ -47,12 +51,15 @@
 # Dependencies
 1. Cucumber - 1.2.5
 2. Selenium - 3.8.1
-3. Courgette - 1.4.3
+3. Courgette - 1.5.1
 4. WebDriverManager - 2.0.1
 5. RestAssured - 3.0.6
 6. SnakeYaml - 1.8
 7. docker - 17
 8. docker-compose - 1.17
+9. Jedis - 2.4.2 
+10. Logback-Logstash-Encoder = 4.9  
+11. Logback-Classic-Version = 1.2.3
 
 # Quick start
 ```sh
@@ -120,6 +127,17 @@ And you can drill down into tag specific reports:
 2. Install docker-compose using: https://docs.docker.com/compose/install/
 3. Once you have above installed, you can go ahead and setup Jenkins pipeline with grid capabilities (Jenkinsfile).
 4. For reference on commands fired from Jenkins pipeline, refer to docker-compose commands in Jenkinsfile.
+
+# How to utilize Redis and Jedis feature?
+1. Test scenarios do not share the data while executing in parallel.
+2. We are using Redis for synchronizing the user data across tests.
+3. Redis is used with the grid. When you hit command ```$ docker-compose up -d``` it will start the Redis container. You may not require Redis while executing tests locally or when you do not want to share data across the tests.
+4. In this project we are using Redis to distribute users across each test. Please refer scenario @signingusingredis in signin.feature.
+5. While executing  ```@usercheck``` setup, after creating a user it adds that user in redis set after that while running the test it pops one user from the set.  
+6. For information about Redis please refer ```selenium-accelerator/src/main/java/com/mindstix/cb/utils/RedisUtility.java```
+
+# How to utilize Elasticsearch, Logstash and Kibana feature?
+1. Please refer [elk\README.md](elk\README.md) for more information. 
 
 # Developer Guide
 > Refer Wiki [here](https://github.com/mindstix-labs/qa-automation-accelerator/wiki/Developer-Guide)
